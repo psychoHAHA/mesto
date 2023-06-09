@@ -3,3 +3,9 @@
   display: grid;
   row-gap: 30px;
 }
+
+@media screen and (min-width: 880px) {
+  .popup__edit {
+    margin-top: 54px;
+  }
+}

@@ -28,4 +28,5 @@
 @import './../blocks/popup/__content/popup__content.css';
 @import './../blocks/popup/__edit/popup__edit.css';
 @import './../blocks/popup/__button-close/popup__button-close.css';
-@import './../blocks/popup/__closed/popup__closed.css';
+@import './../blocks/popup/__opened/popup__opened.css';
+

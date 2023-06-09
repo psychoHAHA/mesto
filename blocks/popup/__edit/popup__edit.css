@@ -1,0 +1,5 @@
+.popup__edit {
+  margin-top: 75px;
+  display: grid;
+  row-gap: 30px;
+}

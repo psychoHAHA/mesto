@@ -1,0 +1,13 @@
+.popup__button {
+  background: transparent;
+  border: none;
+  background-image: url(../../../images/submitButton.svg);
+  width: 238px;
+  height: 46px;
+  margin-top: 45px;
+  cursor: pointer;
+}
+
+.popup__button:hover {
+  opacity: 0.6;
+}

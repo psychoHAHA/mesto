@@ -26,5 +26,5 @@
 @import './../blocks/popup/__input-text/popup__input-text.css';
 @import './../blocks/popup/__button/popup__button.css';
 @import './../blocks/popup/__content/popup__content.css';
-
-
+@import './../blocks/popup/__edit/popup__edit.css';
+@import './../blocks/popup/__button-close/popup__button-close.css';

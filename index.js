@@ -2,12 +2,14 @@ const popupElement = document.querySelector('.popup');
 const buttonEdit = document.querySelector('.profile__button-edit');
 const buttonClose = document.querySelector('.popup__button-close');
 const profileContainer = document.querySelector('.profile__container');
-const profileButtonSave = document.querySelector('.profile__button');
-let groupButton = document.querySelector('.group__button');
+const buttonSave = document.querySelector('.profile__button');
+
 
 // Закрываем и открываем попап
 function popupOpen() {
   popupElement.classList.add('popup__opened');
+  console.log(buttonEdit);
+  console.log(buttonSave);
 }
 
 function popupClose(e) {
@@ -24,13 +26,7 @@ popupElement.addEventListener('click', popupClose);
 
 // end
 
-// Ставим/убираем лайк
-
-function groupLike() {
-  groupButton.classList.toggle('group__button_active');
-}
-
-groupButton.addEventListener('click', groupLike);
+buttonSave.addEventListener('click', profileSave);
 
 function addInfoContainer() {
   let profileName = document.querySelector('.profile__title');

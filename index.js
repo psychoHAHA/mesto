@@ -2,8 +2,11 @@ const popupElement = document.querySelector('.popup');
 const buttonEdit = document.querySelector('.profile__button-edit');
 const buttonClose = document.querySelector('.popup__button-close');
 const profileContainer = document.querySelector('.profile__container');
-const buttonSave = document.querySelector('.profile__button');
+const buttonSave = document.querySelector('.popup__button');
 
+const nameEdit = document.querySelector('.profile__title');
+const infoEdit = document.querySelector('.profile__subtitle');
+const inputEdit = document.querySelector('.popup__input');
 
 // Закрываем и открываем попап
 function popupOpen() {
@@ -24,11 +27,14 @@ buttonEdit.addEventListener('click', popupOpen);
 buttonClose.addEventListener('click', popupClose);
 popupElement.addEventListener('click', popupClose);
 
-// end
+// end 
 
-buttonSave.addEventListener('click', profileSave);
-
-function addInfoContainer() {
-  let profileName = document.querySelector('.profile__title');
-  let profileInfo = document.querySelector('.profile__subtitle');
+function profileEdit() {
+  
 }
+
+profileEdit();
+
+// Кнопка "Сохранить" закрывает попап
+buttonSave.addEventListener('click', popupClose);
+buttonSave.addEventListener('click', profileEdit);

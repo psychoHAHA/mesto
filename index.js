@@ -30,8 +30,8 @@ popupElement.addEventListener('click', popupClose);
 // end 
 
 function editProfile() {
-  nameEdit.innerHTML = inputEditName.value;
-  infoEdit.innerHTML = inputEditInfo.value;
+  nameEdit.textContent = inputEditName.value;
+  infoEdit.textContent = inputEditInfo.value;
 }
 
 // Кнопка "Сохранить" закрывает попап

@@ -3,12 +3,19 @@
   background-size: contain;
   background-color: transparent;
   border: 0;
-  height: 24px;
-  width: 24px;
+  height: 18px;
+  width: 18px;
   margin-left: 10px;
   cursor: pointer;
 }
 
 .profile__button-edit:hover {
   opacity: 0.6;
+}
+
+@media screen and (min-width: 840px) {
+  .profile__button-edit {
+    height: 24px;
+    width: 24px;
+  }
 }

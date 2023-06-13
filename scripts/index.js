@@ -37,18 +37,5 @@ buttonEdit.addEventListener('click', popupOpen);
 buttonClose.addEventListener('click', popupClose);
 popupElement.addEventListener('click', popupClose);
 
-<<<<<<< HEAD:scripts/index.js
 formElement.addEventListener('submit', handleFormSubmit);
 formElement.addEventListener('submit', popupClose);
-=======
-// end 
-
-function editProfile() {
-  nameEdit.textContent = inputEditName.value;
-  infoEdit.textContent = inputEditInfo.value;
-}
-
-// Кнопка "Сохранить" закрывает попап
-buttonSave.addEventListener('click', popupClose);
-buttonSave.addEventListener('click', editProfile);
->>>>>>> f66702c7cb44e18050c40c75bde863471edf34ff:index.js

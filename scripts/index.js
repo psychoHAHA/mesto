@@ -4,8 +4,8 @@ const buttonClose = document.querySelector('.popup__button-close');
 
 let nameEdit = document.querySelector('.profile__title');
 let infoEdit = document.querySelector('.profile__subtitle');
-let inputEditName = document.querySelector('.popup__edit_name');
-let inputEditInfo = document.querySelector('.popup__edit_info');
+let inputEditName = document.querySelector('.popup__input_name');
+let inputEditInfo = document.querySelector('.popup__input_info');
 let formElement = document.querySelector('.popup__form')
 
 // Закрываем и открываем попап

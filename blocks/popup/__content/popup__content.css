@@ -9,14 +9,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 322px;
 }
 
 @media screen and (min-width: 880px) {
   .popup__content {
-    height: 330px;
-    min-width: 430px;
-    padding: 0;
+    width: 430px;
+    padding: 34px 36px 37px;
     margin: 0;
 }
 }

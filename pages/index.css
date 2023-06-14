@@ -1,5 +1,5 @@
 @import '../vendor/normalize.css';
-@import '../vendor/fonts.css';
+@import '../fonts/inter.css';
 @import '../blocks/page/page.css';
 @import '../blocks/body/body.css';
 @import '../blocks/header/header.css';
@@ -29,10 +29,10 @@
 @import '../blocks/popup/__button-close/popup__button-close.css';
 @import '../blocks/popup/_opened/popup_opened.css';
 @import '../blocks/group/__active/group__button_active.css';
-@import '../fonts/inter.css';
 @import '../blocks/footer/__text/footer__text.css';
 @import '../blocks/popup/__form/popup__form.css';
 @import '../blocks/group/__button/_active/group__button_active.css';
+@import '../fonts/inter.css';
 
 
 

@@ -1,3 +1,5 @@
+// Переменные
+
 const popupElement = document.querySelector('.popup');
 const buttonEdit = document.querySelector('.profile__button-edit');
 const buttonClose = document.querySelector('.popup__button-close');
@@ -22,16 +24,19 @@ function popupClose(e) {
 }
 // end 
 
-function editProfile() {
-  nameEdit.textContent = inputEditName.value;
-  infoEdit.textContent = inputEditInfo.value;
-}
+// Редактируем профиль 
 
 function handleFormSubmit (evt) {
   evt.preventDefault();
-  editProfile();
+  nameEdit.textContent = inputEditName.value;
+  infoEdit.textContent = inputEditInfo.value;
   formElement.addEventListener('submit', popupClose);
 }
+
+// end 
+
+
+// Подключаем функции 
 
 buttonEdit.addEventListener('click', popupOpen);
 

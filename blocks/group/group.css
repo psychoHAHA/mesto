@@ -3,7 +3,7 @@
   grid-template-columns: 1fr;
   row-gap: 20px;
   justify-items: center;
-  margin: 36px auto 0;
+  margin: 35px auto 0;
 }
 
 @media screen and (min-width: 880px) {
@@ -12,6 +12,6 @@
     column-gap: 17px;
     align-content: center;
     justify-content: center;
-    margin-top: 51px;
+    margin-top: 47px;
   }
 }

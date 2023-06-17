@@ -7,6 +7,6 @@
 
 @media screen and (min-width: 880px) {
   .profile__text {
-    margin: 0;   
+    margin: -7px 0 0 0;   
   }
 }

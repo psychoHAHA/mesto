@@ -13,19 +13,19 @@
             <img src="images/logo.svg" alt="лого замечательного сайта под названием Mesto, который я начинаю верстать 07.06.2023 в 17:01 по Екатеринбугскому времени. Делаю я это, совершенно не зная, как в дальнейшем мне предстоит писать JavaScript к этому проекту." class="header__logo">
         </header>
 
-        <div class="main">
+        <main class="main">
             <section class="profile">
                 <div class="profile__info">
                     <img src="images/profile.png" alt="Жак-Ив Кусто́ — французский исследователь Мирового океана, фотограф, режиссёр, изобретатель, автор множества книг и фильмов. Являлся членом Французской академии. Командор ордена Почётного легиона. Известен как Капитан Кусто." class="profile__avatar">
                     <div class="profile__container">
                         <div class="profile__text">
                             <h1 class="profile__title">Жак-Ив Кусто</h1>
-                            <button aria-label="Внесите изменения" class="profile__button-edit"></button>
+                            <button type="button" aria-label="Внесите изменения" class="profile__button-edit"></button>
                         </div>
                         <p class="profile__subtitle">Исследователь океана</p>
                     </div>
                 </div>
-                <button aria-label="Добавьте изображение" class="profile__button"></button>
+                <button type="button" aria-label="Добавьте изображение" class="profile__button"></button>
             </section>
     
             <section class="group">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </section>
-        </div>
+        </main>
         
         <footer class="footer">
             <p class="footer__text">&copy; 2020 Mesto Russia</p>
@@ -85,9 +85,9 @@
 
         <aside class="popup">
             <div class="popup__content">
-                <button aria-label="Закрыть" class="popup__button-close"></button>
+                <button type="button" aria-label="Закрыть" class="popup__button-close"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form">
+                <form name="popup" class="popup__form">
                     <input type="text" placeholder="Имя" class="popup__input popup__input_name" value="Жак-Ив Кусто" name="name">
                     <input type="text" placeholder="О себе" class="popup__input popup__input_info" value="Исследователь океана" name="info">
                     <button aria-label="Сохранить изменения" type="submit" class="popup__button"></button>

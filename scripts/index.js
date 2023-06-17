@@ -30,6 +30,7 @@ function editProfile() {
 function handleFormSubmit (evt) {
   evt.preventDefault();
   editProfile();
+  formElement.addEventListener('submit', popupClose);
 }
 
 buttonEdit.addEventListener('click', popupOpen);
@@ -38,4 +39,3 @@ buttonClose.addEventListener('click', popupClose);
 popupElement.addEventListener('click', popupClose);
 
 formElement.addEventListener('submit', handleFormSubmit);
-formElement.addEventListener('submit', popupClose);

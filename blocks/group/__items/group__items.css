@@ -3,5 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  max-width: 282px;
+  max-height: 18px;
   padding: 25px 15px 31px 21px;
 }

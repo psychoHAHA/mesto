@@ -3,7 +3,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  margin: 14px 0 0 0;
+  margin: 8px 0 0 9px;
   padding: 0;
   text-align: center;
   width: 189px;
@@ -14,7 +14,7 @@
 
 @media screen and (min-width: 880px) {
   .profile__subtitle {
-    margin: 16px 0 0 0;
+    margin: 4px 0 0 0;
     display: flex;
     align-items: start;
     font-size: 18px;

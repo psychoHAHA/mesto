@@ -6,14 +6,15 @@ const buttonClose = document.querySelector('.popup__button-close');
 
 let nameEdit = document.querySelector('.profile__title');
 let infoEdit = document.querySelector('.profile__subtitle');
-let inputEditName = document.querySelector('.popup__input_name');
-let inputEditInfo = document.querySelector('.popup__input_info');
+let inputEditName = document.querySelector('.popup__input_edit_profile-name');
+let inputEditInfo = document.querySelector('.popup__input_edit_profile-info');
 let formElement = document.querySelector('.popup__form')
 
 // Закрываем и открываем попап
 function popupOpen() {
   popupElement.classList.add('popup_opened');
-
+  nameEdit.textContent = inputEditName.value;
+  infoEdit.textContent = inputEditInfo.value;
 }
 
 function popupClose(e) {
@@ -30,7 +31,7 @@ function handleFormSubmit (evt) {
   evt.preventDefault();
   nameEdit.textContent = inputEditName.value;
   infoEdit.textContent = inputEditInfo.value;
-  formElement.addEventListener('submit', popupClose);
+  popupElement.classList.remove('popup_opened');
 }
 
 // end 

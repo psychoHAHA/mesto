@@ -56,6 +56,8 @@ function handleFormSubmit (evt) {
 
 // Ставим лайк
 
+const groupElement = document.querySelector('.group');
+const likeButton = groupElement.querySelectorAll('.group__button');
 
 // Подключаем функции 
 

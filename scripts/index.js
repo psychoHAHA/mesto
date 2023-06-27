@@ -85,25 +85,34 @@ const initialCards = [
   }
 ];
 
-const templateElement = document.querySelector('#template-element');
-const groupElement = templateElement.cloneNode(true);
-const groupImage = groupElement.querySelector('.group__image');
-const buttonDelete = groupElement.querySelector('.group__button-delete');
-const groupTitle = groupElement.querySelector('.group__title');
-const buttonLike = groupElement.querySelector('.group__button');
+const groupElement = document.querySelector('.group__element');
+const cardTitle = document.querySelector('.popup-image__title');
+const cardImage = document.querySelector('.group__image');
+const inputText = document.querySelector('.popup__input_edit_image-name');
+const inputImage = document.querySelector('.popup__input_edit_image-url');
+const cardButton = document.querySelector('.popup-image__button');
+const templateElement = document.querySelector('#template-element')
 
-function groupAdd({name, link}) {
-  groupTitle.textContent = name;
-  groupImage.src = link;
+const createCard = ({name, link}) => {
+  const clone = templateElement.content.cloneNode(true);
+  const cardElement = clone.querySelector('.group__element').cloneNode(true);
+  cardElement.querySelector('.group__title').textContent = name;
+  cardElement.querySelector('.group__image').src = link;
 
-  buttonLike.addEventListener('click', () => {
-    buttonLike.classList.toggle('group__button_active');
-  });
-
-
+  return cardElement;
 }
 
-buttonAdd.addEventListener('click', groupAdd);
+const handelSubmit = (e) => {
+
+};
+
+
+initialCards.forEach((item) => {
+  const cardElement = createCard(item);
+  groupElement.prepend(cardElement);
+});
+
+cardButton.addEventListener('submit', handelSubmit);
 
 // Подключаем функции 
 

@@ -62,7 +62,6 @@ function handleFormSubmit (evt) {
 
 // end 
 
-// Ставим лайк
 
 // Добавляем картинки
 
@@ -101,9 +100,19 @@ function createCard({name, link}) {
   const groupTitle = groupElement.querySelector('.group__title');
   const groupImage = groupElement.querySelector('.group__image');
   const buttonLike = groupElement.querySelector('.group__button');
+  const buttonDelete = groupElement.querySelector('.group__button-delete');
 
   groupTitle.textContent = name;
   groupImage.src = link;
+
+  buttonLike.addEventListener('click', () => {
+    buttonLike.classList.toggle('group__button_active');
+  })
+
+  buttonDelete.addEventListener('click', () => {
+    const groupDelete = buttonDelete.closest('.group__element');
+    groupDelete.remove();
+  })
 
   return groupElement;
 }

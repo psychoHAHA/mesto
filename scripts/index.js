@@ -6,6 +6,14 @@ const buttonEdit = document.querySelector('.profile__button-edit');
 const buttonClose = document.querySelector('.popup__button-close');
 const buttonImageClose = document.querySelector('.popup-image__button-close')
 const buttonAdd = document.querySelector('.profile__button');
+const popupImage = document.querySelector('.popup-image');
+const templateElement = document.querySelector('#template-element').content;
+const group = document.querySelector('.group');
+const groupForm = popupImage.querySelector('.popup-image__form');
+const groupInputTitle = popupImage.querySelector('.popup__input_edit_image-name')
+const groupInputUrl = popupImage.querySelector('.popup__input_edit_image-url');
+const groupTitle = popupImage.querySelector('.group__title');
+const groupImage = popupImage.querySelector('.group__image');
 
 let nameEdit = document.querySelector('.profile__title');
 let infoEdit = document.querySelector('.profile__subtitle');
@@ -85,43 +93,32 @@ const initialCards = [
   }
 ];
 
-const groupElement = document.querySelector('.group__element');
-const cardTitle = document.querySelector('.popup-image__title');
-const cardImage = document.querySelector('.group__image');
-const inputText = document.querySelector('.popup__input_edit_image-name');
-const inputImage = document.querySelector('.popup__input_edit_image-url');
-const cardButton = document.querySelector('.popup-image__button');
 
-
-// Создаем карточку 
+// Добавляем картинки на страницу через js
 
 function createCard({name, link}) {
   const groupElement = templateElement.cloneNode(true);
-  const groupTitle = groupElement.querySelector('.popup-image__title');
+  const groupTitle = groupElement.querySelector('.group__title');
   const groupImage = groupElement.querySelector('.group__image');
-  const groupButtonDelete = groupElement.querySelector('.group__button-delete');
-  const groupButtonLike = groupElement.querySelector('group__button');
-  cardTitle.textContent = name;
-  cardImage.src = link;
+  const buttonLike = groupElement.querySelector('.group__button');
+
+  groupTitle.textContent = name;
+  groupImage.src = link;
+
+  return groupElement;
 }
-
-// Добавляем карточки через js
-
-const templateElement = document.querySelector('#template-element').content;
-const group = document.querySelector('.group');
 
 function renderGroup(item) {
-  group.prepend(createCard(item));
+  group.append(createCard(item));
 }
 
-function readGroupFromArray (arr) {
-  for (let i = 0; i <arr.length; i++){
+function readGroupElements(arr) {
+  for (let i = 0; i < arr.length; i++) {
     renderGroup(arr[i]);
   }
 }
 
-readGroupFromArray(initialCards);
-
+ 
 // Подключаем функции 
 
 buttonEdit.addEventListener('click', popupOpen)
@@ -134,3 +131,5 @@ buttonImageClose.addEventListener('click', popupImageClose);
 popupImageElement.addEventListener('click', popupImageClose);
 
 formElement.addEventListener('submit', handleFormSubmit);
+
+readGroupElements(initialCards);

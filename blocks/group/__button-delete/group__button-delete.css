@@ -2,6 +2,7 @@
   background: transparent;
   border: 0;
   background-image: url(../../../images/buttonDelete.svg);
+  background-repeat: no-repeat;
   cursor: pointer;
   width: 18px;
   height: 19px;

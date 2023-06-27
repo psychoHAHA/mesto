@@ -91,28 +91,36 @@ const cardImage = document.querySelector('.group__image');
 const inputText = document.querySelector('.popup__input_edit_image-name');
 const inputImage = document.querySelector('.popup__input_edit_image-url');
 const cardButton = document.querySelector('.popup-image__button');
-const templateElement = document.querySelector('#template-element')
 
-const createCard = ({name, link}) => {
-  const clone = templateElement.content.cloneNode(true);
-  const cardElement = clone.querySelector('.group__element').cloneNode(true);
-  cardElement.querySelector('.group__title').textContent = name;
-  cardElement.querySelector('.group__image').src = link;
 
-  return cardElement;
+// Создаем карточку 
+
+function createCard({name, link}) {
+  const groupElement = templateElement.cloneNode(true);
+  const groupTitle = groupElement.querySelector('.popup-image__title');
+  const groupImage = groupElement.querySelector('.group__image');
+  const groupButtonDelete = groupElement.querySelector('.group__button-delete');
+  const groupButtonLike = groupElement.querySelector('group__button');
+  cardTitle.textContent = name;
+  cardImage.src = link;
 }
 
-const handelSubmit = (e) => {
+// Добавляем карточки через js
 
-};
+const templateElement = document.querySelector('#template-element').content;
+const group = document.querySelector('.group');
 
+function renderGroup(item) {
+  group.prepend(createCard(item));
+}
 
-initialCards.forEach((item) => {
-  const cardElement = createCard(item);
-  groupElement.prepend(cardElement);
-});
+function readGroupFromArray (arr) {
+  for (let i = 0; i <arr.length; i++){
+    renderGroup(arr[i]);
+  }
+}
 
-cardButton.addEventListener('submit', handelSubmit);
+readGroupFromArray(initialCards);
 
 // Подключаем функции 
 

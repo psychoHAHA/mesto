@@ -9,4 +9,5 @@
   margin: 0 auto;
   justify-content: center;
   align-items: center;
+  transition: visibility .3s linear 0s;
 }

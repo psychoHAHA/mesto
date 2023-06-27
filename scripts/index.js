@@ -85,25 +85,42 @@ const initialCards = [
   }
 ];
 
-const templateElement = document.querySelector('#template-element');
-const groupElement = templateElement.cloneNode(true);
-const groupImage = groupElement.querySelector('.group__image');
-const buttonDelete = groupElement.querySelector('.group__button-delete');
-const groupTitle = groupElement.querySelector('.group__title');
-const buttonLike = groupElement.querySelector('.group__button');
-
-function groupAdd({name, link}) {
-  groupTitle.textContent = name;
-  groupImage.src = link;
-
-  buttonLike.addEventListener('click', () => {
-    buttonLike.classList.toggle('group__button_active');
-  });
+const groupElement = document.querySelector('.group__element');
+const cardTitle = document.querySelector('.popup-image__title');
+const cardImage = document.querySelector('.group__image');
+const inputText = document.querySelector('.popup__input_edit_image-name');
+const inputImage = document.querySelector('.popup__input_edit_image-url');
+const cardButton = document.querySelector('.popup-image__button');
 
 
+// Создаем карточку 
+
+function createCard({name, link}) {
+  const groupElement = templateElement.cloneNode(true);
+  const groupTitle = groupElement.querySelector('.popup-image__title');
+  const groupImage = groupElement.querySelector('.group__image');
+  const groupButtonDelete = groupElement.querySelector('.group__button-delete');
+  const groupButtonLike = groupElement.querySelector('group__button');
+  cardTitle.textContent = name;
+  cardImage.src = link;
 }
 
-buttonAdd.addEventListener('click', groupAdd);
+// Добавляем карточки через js
+
+const templateElement = document.querySelector('#template-element').content;
+const group = document.querySelector('.group');
+
+function renderGroup(item) {
+  group.prepend(createCard(item));
+}
+
+function readGroupFromArray (arr) {
+  for (let i = 0; i <arr.length; i++){
+    renderGroup(arr[i]);
+  }
+}
+
+readGroupFromArray(initialCards);
 
 // Подключаем функции 
 

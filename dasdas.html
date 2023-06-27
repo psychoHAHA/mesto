@@ -1,0 +1,82 @@
+<!-- <div class="group__element">
+                    <img src="images/Норвегия.png" alt="картинка1" class="group__image">
+                    <button class="group__button-delete" type="button" aria-label="Удалить"></button>
+                    <div class="group__items">
+                        <h2 class="group__title">Норвегия</h2>
+                        <button type="button" aria-label="Отметить как понравившееся" class="group__button"></button>
+                    </div>
+                </div>
+    
+                <div class="group__element">
+                    <img src="images/Стетинд.png" alt="картинка1" class="group__image">
+                    <button class="group__button-delete" type="button" aria-label="Удалить"></button>
+                    <div class="group__items">
+                        <h2 class="group__title">Стетинд</h2>
+                        <button type="button" aria-label="Отметить как понравившееся" class="group__button"></button>
+                    </div>
+                </div>
+    
+                <div class="group__element">
+                    <img src="images/Лос-Анджелес.png" alt="картинка1" class="group__image">
+                    <button class="group__button-delete" type="button" aria-label="Удалить"></button>
+                    <div class="group__items">
+                        <h2 class="group__title">Лос-Анджелес</h2>
+                        <button type="button" aria-label="Отметить как понравившееся" class="group__button"></button>
+                    </div>
+                </div>
+    
+                <div class="group__element">
+                    <img src="images/Швейцария.png" alt="картинка1" class="group__image">
+                    <button class="group__button-delete" type="button" aria-label="Удалить"></button>
+                    <div class="group__items">
+                        <h2 class="group__title">Швейцария</h2>
+                        <button type="button" aria-label="Отметить как понравившееся" class="group__button"></button>
+                    </div>
+                </div>
+    
+                <div class="group__element">
+                    <img src="images/Альпы.png" alt="картинка1" class="group__image">
+                    <button class="group__button-delete" type="button" aria-label="Удалить"></button>
+                    <div class="group__items">
+                        <h2 class="group__title">Альпийские горы</h2>
+                        <button type="button" aria-label="Отметить как понравившееся" class="group__button"></button>
+                    </div>
+                </div>
+    
+                <div class="group__element">
+                    <img src="images/Австрия.png" alt="картинка1" class="group__image">
+                    <button class="group__button-delete" type="button" aria-label="Удалить"></button>
+                    <div class="group__items">
+                        <h2 class="group__title">Австрия</h2>
+                        <button type="button" aria-label="Отметить как понравившееся" class="group__button"></button>
+                    </div>
+                </div> -->
+
+const groupElement = document.querySelector('.group__element');
+const cardTitle = document.querySelector('.popup-image__title');
+const cardImage = document.querySelector('.group__image');
+const inputText = document.querySelector('.popup__input_edit_image-name');
+const inputImage = document.querySelector('.popup__input_edit_image-url');
+const cardButton = document.querySelector('.popup-image__button');
+const templateElement = document.querySelector('#template-element')
+
+const createCard = ({name, link}) => {
+  const clone = templateElement.content.cloneNode(true);
+  const cardElement = clone.querySelector('.group__element').cloneNode(true);
+  cardElement.querySelector('.group__title').textContent = name;
+  cardElement.querySelector('.group__image').src = link;
+
+  return cardElement;
+}
+
+const handelSubmit = (e) => {
+
+};
+
+
+initialCards.forEach((item) => {
+  const cardElement = createCard(item);
+  groupElement.prepend(cardElement);
+});
+
+cardButton.addEventListener('submit', handelSubmit);

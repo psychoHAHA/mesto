@@ -1,4 +1,4 @@
-.popup_card {
+.popup_image {
   display: flex;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -9,8 +9,4 @@
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: ease-in-out 0.3s;
 }
-

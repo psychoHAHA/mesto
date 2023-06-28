@@ -14,6 +14,8 @@ const groupInputTitle = popupCard.querySelector('.popup__input_edit_image-name')
 const groupInputUrl = popupCard.querySelector('.popup__input_edit_image-url');
 const groupTitle = popupCard.querySelector('.group__title');
 const groupImage = popupCard.querySelector('.group__image');
+const popupImage = document.querySelector('.popup_image')
+const buttonImageClose = document.querySelector('.popup_image__button-close')
 
 let nameEdit = document.querySelector('.profile__title');
 let infoEdit = document.querySelector('.profile__subtitle');
@@ -60,38 +62,7 @@ function handleFormSubmit (evt) {
   popupElement.classList.remove('popup_opened');
 }
 
-// end 
-
-
-// Добавляем картинки
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
+// end
 
 // Добавляем картинки на страницу через js
 
@@ -121,12 +92,23 @@ function renderGroup(item) {
   group.append(createCard(item));
 }
 
-function readGroupElements(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    renderGroup(arr[i]);
-  }
-}
+initialCards.forEach((item) => {
+  renderGroup(item)
+})
 
+// function readGroupElements(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     renderGroup(arr[i]);
+//   }
+// }
+
+// end
+
+// Попап с картинкой 
+
+buttonImageClose.addEventListener('click', () => {
+  popupImage.classList.toggle('.popup_image_opened')
+})
  
 // Подключаем функции 
 
@@ -141,4 +123,4 @@ popupCardElement.addEventListener('click', popupCardClose);
 
 formElement.addEventListener('submit', handleFormSubmit);
 
-readGroupElements(initialCards);
+// readGroupElements(initialCards);

@@ -1,4 +1,4 @@
-.popup-image__button-close {
+.popup_card__button-close {
   background: transparent;
   border: none;
   background-image: url(../../../images/buttonClose.svg);
@@ -12,12 +12,12 @@
   cursor: pointer;
 }
 
-.popup-image__button-close:hover {
+.popup_card__button-close:hover {
   opacity: 0.6;
 }
 
 @media screen and (min-width: 880px) {
-  .popup-image__button-close {
+  .popup_card__button-close {
     height: 32px;
     width: 32px;
     right: -40px;

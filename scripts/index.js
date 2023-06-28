@@ -18,6 +18,7 @@ const popupImageElement = document.querySelector('.popup_image')
 const buttonImageClose = document.querySelector('.popup_image__button-close')
 const popupImagePhoto = document.querySelector('.popup_image__photo')
 const popupImageTitle = document.querySelector('.popup_image__title')
+const buttonCardAdd = document.querySelector('.popup_card__button');
 
 let nameEdit = document.querySelector('.profile__title');
 let infoEdit = document.querySelector('.profile__subtitle');
@@ -96,7 +97,17 @@ function createCard({name, link}) {
   buttonImageClose.addEventListener('click', () => {
     popupImageElement.classList.remove('popup_image_opened')
   })
+  
+  const handleAddSubmit = (e) => {
+    e.preventDefault()
+    const addNameInput = document.querySelector('.popup__input_edit_image-name')
+    const addUrlInput = document.querySelector('.popup__input_edit_image-url')
+    addNameInput.value = name
+    addUrlInput.value = link
+    renderGroup.append(groupElement)  
+  }
 
+  buttonCardAdd.addEventListener('submit', handleAddSubmit)
   return groupElement;
 }
 
@@ -107,6 +118,14 @@ function renderGroup(item) {
 initialCards.forEach((item) => {
   renderGroup(item)
 })
+
+const handleAddSubmit = (e) => {
+  e.preventDefault()
+  const addNameInput = document.querySelector('.popup__input_edit_image-name')
+  const addUrlInput = document.querySelector('.popup__input_edit_image-url')
+  addNameInput.value = name;
+
+}
 
 // end
 

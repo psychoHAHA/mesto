@@ -17,6 +17,7 @@ const groupImage = popupCard.querySelector('.group__image');
 const popupImageElement = document.querySelector('.popup_image')
 const buttonImageClose = document.querySelector('.popup_image__button-close')
 const popupImagePhoto = document.querySelector('.popup_image__photo')
+const popupImageTitle = document.querySelector('.popup_image__title')
 
 let nameEdit = document.querySelector('.profile__title');
 let infoEdit = document.querySelector('.profile__subtitle');
@@ -88,7 +89,8 @@ function createCard({name, link}) {
 
   groupImage.addEventListener('click', () => {
     popupImageElement.classList.add('popup_image_opened')
-    popupImagePhoto.src = popup__input_edit_image-url.value
+    popupImagePhoto.src = link
+    popupImageTitle.textContent = name
   })
 
   buttonImageClose.addEventListener('click', () => {

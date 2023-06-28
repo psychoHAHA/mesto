@@ -14,6 +14,9 @@ const groupInputTitle = popupCard.querySelector('.popup__input_edit_image-name')
 const groupInputUrl = popupCard.querySelector('.popup__input_edit_image-url');
 const groupTitle = popupCard.querySelector('.group__title');
 const groupImage = popupCard.querySelector('.group__image');
+const popupImageElement = document.querySelector('.popup_image')
+const buttonImageClose = document.querySelector('.popup_image__button-close')
+const popupImagePhoto = document.querySelector('.popup_image__photo')
 
 let nameEdit = document.querySelector('.profile__title');
 let infoEdit = document.querySelector('.profile__subtitle');
@@ -83,6 +86,15 @@ function createCard({name, link}) {
     groupDelete.remove();
   })
 
+  groupImage.addEventListener('click', () => {
+    popupImageElement.classList.add('popup_image_opened')
+    popupImagePhoto.src = popup__input_edit_image-url.value
+  })
+
+  buttonImageClose.addEventListener('click', () => {
+    popupImageElement.classList.remove('popup_image_opened')
+  })
+
   return groupElement;
 }
 
@@ -95,12 +107,6 @@ initialCards.forEach((item) => {
 })
 
 // end
-
-const popupImageElement = document.querySelector('.popup_image')
-
-groupImage.addEventListener('click', () => {
-  popupImageElement.classList.add('popup_image_opened')
-})
 
 // Подключаем функции 
 

@@ -1,11 +1,3 @@
-/* .popup_image__photo {
-  width: 240px;
-  height: 300px;
+.popup_image__photo {
+  object-fit: contain;
 }
-
-@media screen and (min-width: 880px) {
-  .popup_image__photo {
-    width: 240px;
-    height: 300px;
-  }
-} */

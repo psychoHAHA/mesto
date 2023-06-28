@@ -14,8 +14,6 @@ const groupInputTitle = popupCard.querySelector('.popup__input_edit_image-name')
 const groupInputUrl = popupCard.querySelector('.popup__input_edit_image-url');
 const groupTitle = popupCard.querySelector('.group__title');
 const groupImage = popupCard.querySelector('.group__image');
-const popupImage = document.querySelector('.popup_image')
-const buttonImageClose = document.querySelector('.popup_image__button-close')
 
 let nameEdit = document.querySelector('.profile__title');
 let infoEdit = document.querySelector('.profile__subtitle');
@@ -96,20 +94,14 @@ initialCards.forEach((item) => {
   renderGroup(item)
 })
 
-// function readGroupElements(arr) {
-//   for (let i = 0; i < arr.length; i++) {
-//     renderGroup(arr[i]);
-//   }
-// }
-
 // end
 
-// Попап с картинкой 
+const popupImageElement = document.querySelector('.popup_image')
 
-buttonImageClose.addEventListener('click', () => {
-  popupImage.classList.toggle('.popup_image_opened')
+groupImage.addEventListener('click', () => {
+  popupImageElement.classList.add('popup_image_opened')
 })
- 
+
 // Подключаем функции 
 
 buttonEdit.addEventListener('click', popupOpen)
@@ -120,7 +112,3 @@ popupElement.addEventListener('click', popupClose);
 
 buttonCardClose.addEventListener('click', popupCardClose);
 popupCardElement.addEventListener('click', popupCardClose);
-
-formElement.addEventListener('submit', handleFormSubmit);
-
-// readGroupElements(initialCards);

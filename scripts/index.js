@@ -90,8 +90,8 @@ function createCard({name, link}) {
 
   groupImage.addEventListener('click', () => {
     popupImageElement.classList.add('popup_image_opened')
-    popupImagePhoto.src = link
-    popupImageTitle.textContent = name
+    link = popupImagePhoto.src
+    name = popupImageTitle.textContent
   })
 
   buttonImageClose.addEventListener('click', () => {
@@ -111,8 +111,8 @@ initialCards.forEach((item) => {
 
 // end
 
-function handleFormSubmit (evt) {
-  evt.preventDefault()
+function handleFormSubmit (e) {
+  e.preventDefault()
   
   const newGroupCard = {}
   newGroupCard.name = groupInputTitle.value
@@ -120,7 +120,7 @@ function handleFormSubmit (evt) {
 
   renderGroup(newGroupCard)
 
-  popupCardClose(evt)
+  popupCardClose(e)
 }
 
 // Подключаем функции 

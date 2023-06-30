@@ -111,6 +111,8 @@ initialCards.forEach((item) => {
 
 // end
 
+// Добавляем новую карточку на страницу
+
 function handleFormSubmit (e) {
   e.preventDefault()
   
@@ -122,6 +124,8 @@ function handleFormSubmit (e) {
 
   popupCardClose(e)
 }
+
+// end
 
 // Подключаем функции 
 

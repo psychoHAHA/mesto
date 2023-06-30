@@ -26,6 +26,8 @@ let inputEditName = document.querySelector('.popup__input_edit_profile-name')
 let inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
 let formElement = document.querySelector('.popup__form')
 
+// end
+
 // Закрываем и открываем попапы
 
 function popupOpen() {
@@ -41,7 +43,9 @@ function popupClose(e) {
   }
 }
 
-// ПОПАП ДОБАВЛЕНИЯ КАРТИНКИ
+// end 
+
+// Попап добавления картинки
 
 function popupCardOpen() {
   popupCardElement.classList.add('popup_card_opened')
@@ -79,15 +83,6 @@ function createCard({name, link}) {
   groupTitle.textContent = name
   groupImage.src = link
 
-  buttonLike.addEventListener('click', () => {
-    buttonLike.classList.toggle('group__button_active')
-  })
-
-  buttonDelete.addEventListener('click', () => {
-    const groupDelete = buttonDelete.closest('.group__element')
-    groupDelete.remove()
-  })
-
   groupImage.addEventListener('click', () => {
     popupImageElement.classList.add('popup_image_opened')
     popupImagePhoto.src = link
@@ -98,11 +93,20 @@ function createCard({name, link}) {
     popupImageElement.classList.remove('popup_image_opened')
   })
 
+  buttonLike.addEventListener('click', () => {
+    buttonLike.classList.toggle('group__button_active')
+  })
+
+  buttonDelete.addEventListener('click', () => {
+    const groupDelete = buttonDelete.closest('.group__element')
+    groupDelete.remove()
+  })
+
   return groupElement
 }
 
 function renderGroup(item) {
-  group.append(createCard(item))
+  group.prepend(createCard(item))
 }
 
 // Добавление новой карточки 
@@ -119,6 +123,8 @@ function handleFormSubmit (e) {
 }
 
 // end
+
+// Достаем элементы из массива
 
 initialCards.forEach((item) => {
   renderGroup(item)
@@ -137,5 +143,4 @@ popupElement.addEventListener('click', popupClose)
 buttonCardClose.addEventListener('click', popupCardClose)
 popupCardElement.addEventListener('click', popupCardClose)
 
-buttonCardAdd.addEventListener('submit', handleFormSubmit)
-
+groupForm.addEventListener('submit', handleFormSubmit)

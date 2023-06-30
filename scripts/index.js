@@ -90,8 +90,8 @@ function createCard({name, link}) {
 
   groupImage.addEventListener('click', () => {
     popupImageElement.classList.add('popup_image_opened')
-    link = popupImagePhoto.src
-    name = popupImageTitle.textContent
+    popupImagePhoto.src = link
+    popupImageTitle.textContent = name
   })
 
   buttonImageClose.addEventListener('click', () => {
@@ -105,13 +105,7 @@ function renderGroup(item) {
   group.append(createCard(item))
 }
 
-initialCards.forEach((item) => {
-  renderGroup(item)
-})
-
-// end
-
-// Добавляем новую карточку на страницу
+// Добавление новой карточки 
 
 function handleFormSubmit (e) {
   e.preventDefault()
@@ -121,9 +115,14 @@ function handleFormSubmit (e) {
   newGroupCard.link = groupInputUrl.value
 
   renderGroup(newGroupCard)
-
   popupCardClose(e)
 }
+
+// end
+
+initialCards.forEach((item) => {
+  renderGroup(item)
+})
 
 // end
 

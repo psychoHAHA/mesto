@@ -11,5 +11,5 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.2s;
 }

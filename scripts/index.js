@@ -1,24 +1,24 @@
 // Переменные
 
 const popupElement = document.querySelector('.popup')
-const popupCardElement = document.querySelector('.popup_card')
+const popupCardElement = document.querySelector('.popup-card')
 const buttonEdit = document.querySelector('.profile__button-edit')
 const buttonClose = document.querySelector('.popup__button-close')
-const buttonCardClose = document.querySelector('.popup_card__button-close')
+const buttonCardClose = document.querySelector('.popup-card__button-close')
 const buttonAdd = document.querySelector('.profile__button')
-const popupCard = document.querySelector('.popup_card')
+const popupCard = document.querySelector('.popup-card')
 const templateElement = document.querySelector('#template-element').content
 const group = document.querySelector('.group')
-const groupForm = popupCard.querySelector('.popup_card__form')
+const groupForm = popupCard.querySelector('.popup-card__form')
 const groupInputTitle = popupCard.querySelector('.popup__input_edit_image-name')
 const groupInputUrl = popupCard.querySelector('.popup__input_edit_image-url')
 const groupTitle = popupCard.querySelector('.group__title')
 const groupImage = popupCard.querySelector('.group__image')
-const popupImageElement = document.querySelector('.popup_image')
-const buttonImageClose = document.querySelector('.popup_image__button-close')
-const popupImagePhoto = document.querySelector('.popup_image__photo')
-const popupImageTitle = document.querySelector('.popup_image__title')
-const buttonCardAdd = document.querySelector('.popup_card__button')
+const popupImageElement = document.querySelector('.popup-image')
+const buttonImageClose = document.querySelector('.popup-image__button-close')
+const popupImagePhoto = document.querySelector('.popup-image__photo')
+const popupImageTitle = document.querySelector('.popup-image__title')
+const buttonCardAdd = document.querySelector('.popup-card__button')
 
 let nameEdit = document.querySelector('.profile__title')
 let infoEdit = document.querySelector('.profile__subtitle')
@@ -48,13 +48,13 @@ function popupClose(e) {
 // Попап добавления картинки
 
 function popupCardOpen() {
-  popupCardElement.classList.add('popup_card_opened')
+  popupCardElement.classList.add('popup-card_opened')
 }
 
 function popupCardClose(e) {
 
   if (e.target === e.currentTarget) {
-    popupCardElement.classList.remove('popup_card_opened')
+    popupCardElement.classList.remove('popup-card_opened')
   }
 }
 
@@ -84,13 +84,13 @@ function createCard({name, link}) {
   groupImage.src = link
 
   groupImage.addEventListener('click', () => {
-    popupImageElement.classList.add('popup_image_opened')
+    popupImageElement.classList.add('popup-image_opened')
     popupImagePhoto.src = link
     popupImageTitle.textContent = name
   })
 
   buttonImageClose.addEventListener('click', () => {
-    popupImageElement.classList.remove('popup_image_opened')
+    popupImageElement.classList.remove('popup-image_opened')
   })
 
   buttonLike.addEventListener('click', () => {

@@ -1,11 +1,11 @@
-.popup_card__form {
+.popup-card__form {
   margin-top: 75px;
   display: grid;
   row-gap: 30px;
 }
 
 @media screen and (min-width: 880px) {
-  .popup_card__form {
+  .popup-card__form {
     margin-top: 54px;
   }
 }

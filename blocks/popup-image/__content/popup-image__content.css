@@ -1,4 +1,4 @@
-.popup_image__content {
+.popup-image__content {
   box-sizing: border-box;
   position: relative;
   color: #000;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (min-width: 880px) {
-  .popup_image__content {
+  .popup-image__content {
     padding: 0;
     margin: 0;
     max-height: 562px;

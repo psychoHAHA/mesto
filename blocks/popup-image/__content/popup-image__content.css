@@ -6,15 +6,5 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 300px;
-  min-width: 240px;
-}
-
-@media screen and (min-width: 880px) {
-  .popup-image__content {
-    padding: 0;
-    margin: 0;
-    max-height: 562px;
-    max-width: 816px;
-}
+  border-radius: 0;
 }

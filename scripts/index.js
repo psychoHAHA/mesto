@@ -1,72 +1,57 @@
 // Переменные
 
-const popupElement = document.querySelector('.popup')
+// Попапы
+const popupProfileElement = document.querySelector('.popup-profile')
 const popupCardElement = document.querySelector('.popup-card')
+const popupImageElement = document.querySelector('.popup-image')
+
 const buttonEdit = document.querySelector('.profile__button-edit')
-const buttonClose = document.querySelector('.popup__button-close')
-const buttonCardClose = document.querySelector('.popup-card__button-close')
 const buttonAdd = document.querySelector('.profile__button')
+const buttonProfileClose = document.querySelector('.popup-profile__button-close')
+const buttonCardClose = document.querySelector('.popup-card__button-close')
+const buttonImageClose = document.querySelector('.popup-image__button-close')
+const buttonCardAdd = document.querySelector('.popup-card__button')
+const popupProfileButton = document.querySelector('.popup-profile__button')
+
+const profileForm = document.querySelector('.popup-profile__form')
 const popupCard = document.querySelector('.popup-card')
 const templateElement = document.querySelector('#template-element').content
 const group = document.querySelector('.group')
-const groupForm = popupCard.querySelector('.popup-card__form')
+const cardForm = popupCard.querySelector('.popup-card__form')
 const groupInputTitle = popupCard.querySelector('.popup-card__input_edit_image-name')
 const groupInputUrl = popupCard.querySelector('.popup-card__input_edit_image-url')
 const groupTitle = popupCard.querySelector('.group__title')
 const groupImage = popupCard.querySelector('.group__image')
-const popupImageElement = document.querySelector('.popup-image')
-const buttonImageClose = document.querySelector('.popup-image__button-close')
 const popupImagePhoto = document.querySelector('.popup-image__photo')
 const popupImageTitle = document.querySelector('.popup-image__title')
-const buttonCardAdd = document.querySelector('.popup-card__button')
 
-let nameEdit = document.querySelector('.profile__title')
-let infoEdit = document.querySelector('.profile__subtitle')
-let inputEditName = document.querySelector('.popup__input_edit_profile-name')
-let inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
-let formElement = document.querySelector('.popup__form')
-
-// end
+const nameEdit = document.querySelector('.profile__title')
+const infoEdit = document.querySelector('.profile__subtitle')
+const inputEditName = document.querySelector('.popup__input_edit_profile-name')
+const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
+const formElement = document.querySelector('.popup__form')
 
 // Закрываем и открываем попапы
 
-function popupOpen() {
-  popupElement.classList.add('popup_opened')
-  nameEdit.textContent = inputEditName.value
-  infoEdit.textContent = inputEditInfo.value
+
+function openPopup(e) {
+  e.classList.add('popup_opened')
 }
 
-function popupClose(e) {
-
-  if (e.target === e.currentTarget) {
-    popupElement.classList.remove('popup_opened')
-  }
-}
-
-// end 
-
-// Попап добавления картинки
-
-function popupCardOpen() {
-  popupCardElement.classList.add('popup-card_opened')
-}
-
-function popupCardClose(e) {
-
-  if (e.target === e.currentTarget) {
-    popupCardElement.classList.remove('popup-card_opened')
-  }
+function closePopup(e) {
+  e.classList.remove('popup_opened')
 }
 
 // end 
 
 // Редактируем профиль 
 
-function handleFormSubmit (evt) {
+function profileFormSubmit (evt) {
   evt.preventDefault()
   nameEdit.textContent = inputEditName.value
   infoEdit.textContent = inputEditInfo.value
-  popupElement.classList.remove('popup_opened')
+
+  closePopup(popupProfileElement)
 }
 
 // end
@@ -82,15 +67,17 @@ function createCard({name, link}) {
 
   groupTitle.textContent = name
   groupImage.src = link
+  groupImage.alt = name
 
   groupImage.addEventListener('click', () => {
-    popupImageElement.classList.add('popup-image_opened')
     popupImagePhoto.src = link
     popupImageTitle.textContent = name
+
+    openPopup(popupImageElement)
   })
 
   buttonImageClose.addEventListener('click', () => {
-    popupImageElement.classList.remove('popup-image_opened')
+    closePopup(popupImageElement)
   })
 
   buttonLike.addEventListener('click', () => {
@@ -98,28 +85,26 @@ function createCard({name, link}) {
   })
 
   buttonDelete.addEventListener('click', () => {
-    const groupDelete = buttonDelete.closest('.group__element')
-    groupDelete.remove()
+    const cardDelete = buttonDelete.closest('.group__element')
+    cardDelete.remove()
   })
 
   return groupElement
 }
 
-function renderGroup(item) {
+function renderCard(item) {
   group.prepend(createCard(item))
 }
 
 // Добавление новой карточки 
 
-function handleFormSubmit (e) {
+function cardFormSubmit (e) {
   e.preventDefault()
   
-  const newGroupCard = {}
-  newGroupCard.name = groupInputTitle.value
-  newGroupCard.link = groupInputUrl.value
+  const newGroupCard = {name: groupInputTitle.value, link: groupInputUrl.value}
 
-  renderGroup(newGroupCard)
-  popupCardClose(e)
+  renderCard(newGroupCard)
+  closePopup(popupCardElement)
 }
 
 // end
@@ -127,20 +112,33 @@ function handleFormSubmit (e) {
 // Достаем элементы из массива
 
 initialCards.forEach((item) => {
-  renderGroup(item)
+  renderCard(item)
 })
 
 // end
 
 // Подключаем функции 
 
-buttonEdit.addEventListener('click', popupOpen)
-buttonAdd.addEventListener('click', popupCardOpen)
+buttonEdit.addEventListener('click', () => {
+  openPopup(popupProfileElement)
+})
 
-buttonClose.addEventListener('click', popupClose)
-popupElement.addEventListener('click', popupClose)
+buttonAdd.addEventListener('click', () => {
+  openPopup(popupCardElement)
+})
 
-buttonCardClose.addEventListener('click', popupCardClose)
-popupCardElement.addEventListener('click', popupCardClose)
+buttonProfileClose.addEventListener('click', () => {
+  profileForm.reset()
+  closePopup(popupProfileElement)
+})
 
-groupForm.addEventListener('submit', handleFormSubmit)
+buttonCardClose.addEventListener('click', () => {
+  cardForm.reset()
+  closePopup(popupCardElement)
+})
+
+
+
+profileForm.addEventListener('submit', profileFormSubmit)
+cardForm.addEventListener('submit', cardFormSubmit)
+

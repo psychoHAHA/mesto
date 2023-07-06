@@ -11,7 +11,6 @@ const buttonImageClose = document.querySelector('.popup-image__button-close')
 
 const buttonEdit = document.querySelector('.profile__button-edit')
 const buttonAdd = document.querySelector('.profile__button')
-const buttonCardAdd = document.querySelector('.popup-card__button')
 const popupProfileButton = document.querySelector('.popup-profile__button')
 
 const profileForm = document.querySelector('.popup-profile__form')
@@ -47,7 +46,7 @@ function closePopup(e) {
 
 // Редактируем профиль 
 
-function profileFormSubmit (evt) {
+function submitProfileForm (evt) {
   evt.preventDefault()
   nameEdit.textContent = inputEditName.value
   infoEdit.textContent = inputEditInfo.value
@@ -72,6 +71,7 @@ function createCard({name, link}) {
 
   groupImage.addEventListener('click', () => {
     popupImagePhoto.src = link
+    popupImagePhoto.alt = name
     popupImageTitle.textContent = name
 
     openPopup(popupImageElement)
@@ -95,12 +95,13 @@ function renderCard(item) {
 
 // Добавление новой карточки 
 
-function cardFormSubmit (e) {
+function submitCardForm (e) {
   e.preventDefault()
   
   const newGroupCard = {name: groupInputTitle.value, link: groupInputUrl.value}
 
   renderCard(newGroupCard)
+  cardForm.reset()
   closePopup(popupCardElement)
 }
 
@@ -128,5 +129,5 @@ buttonProfileClose.addEventListener('click', () => closePopup(popupProfileElemen
 buttonCardClose.addEventListener('click', () => closePopup(popupCardElement))
 buttonImageClose.addEventListener('click', () => closePopup(popupImageElement))
 
-profileForm.addEventListener('submit', profileFormSubmit)
-cardForm.addEventListener('submit', cardFormSubmit)
+profileForm.addEventListener('submit', submitProfileForm)
+cardForm.addEventListener('submit', submitCardForm)

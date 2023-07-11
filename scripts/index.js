@@ -2,7 +2,7 @@
 
 // Попапы
 
-const popupElement = document.querySelector('.popup')
+const closePopupByOverlay = document.querySelectorAll('.popup')
 const popupProfileElement = document.querySelector('.popup-profile')
 const popupCardElement = document.querySelector('.popup-card')
 const popupImageElement = document.querySelector('.popup-image')
@@ -35,8 +35,6 @@ const formElement = document.querySelector('.popup__form')
 
 // Закрываем и открываем попапы
 
-
-
 function openPopup(evt) {
   evt.classList.add('popup_opened')
   document.addEventListener('keydown', closePopupEsc)
@@ -52,6 +50,12 @@ function closePopupEsc(evt) {
     const popup = document.querySelector('.popup_opened')
     closePopup(popup)
   }
+}
+
+for (let i = 0; i < closePopupByOverlay.length; ++i) {
+  closePopupByOverlay[i].addEventListener('click', (e) => {
+    closePopup(e.target)
+  })
 }
 
 // end

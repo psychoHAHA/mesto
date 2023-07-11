@@ -36,17 +36,25 @@ const formElement = document.querySelector('.popup__form')
 // Закрываем и открываем попапы
 
 
-function openPopup(e) {
-  e.classList.add('popup_opened')
+
+function openPopup(evt) {
+  evt.classList.add('popup_opened')
+  document.addEventListener('keydown', closePopupEsc)
 }
 
-function closePopup(e) {
-  if (e.target === e.currentTarget) {
-    e.classList.remove('popup_opened')
+function closePopup(evt) {
+  evt.classList.remove('popup_opened')
+  document.removeEventListener('keydown', closePopupEsc)
+}
+
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened')
+    closePopup(popup)
   }
 }
 
-// end 
+// end
 
 // Редактируем профиль 
 
@@ -132,10 +140,6 @@ buttonAdd.addEventListener('click', () => {
 buttonProfileClose.addEventListener('click', () => closePopup(popupProfileElement))
 buttonCardClose.addEventListener('click', () => closePopup(popupCardElement))
 buttonImageClose.addEventListener('click', () => closePopup(popupImageElement))
-
-popupElement.addEventListener('click', () => closePopup(popupProfileElement))
-popupElement.addEventListener('click', () => closePopup(popupCardElement))
-popupElement.addEventListener('click', () => closePopup(popupImageElement))
 
 profileForm.addEventListener('submit', submitProfileForm)
 cardForm.addEventListener('submit', submitCardForm)

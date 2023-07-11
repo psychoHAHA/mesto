@@ -1,6 +1,8 @@
 // Переменные
 
 // Попапы
+
+const popupElement = document.querySelector('.popup')
 const popupProfileElement = document.querySelector('.popup-profile')
 const popupCardElement = document.querySelector('.popup-card')
 const popupImageElement = document.querySelector('.popup-image')
@@ -39,7 +41,9 @@ function openPopup(e) {
 }
 
 function closePopup(e) {
-  e.classList.remove('popup_opened')
+  if (e.target === e.currentTarget) {
+    e.classList.remove('popup_opened')
+  }
 }
 
 // end 
@@ -128,6 +132,10 @@ buttonAdd.addEventListener('click', () => {
 buttonProfileClose.addEventListener('click', () => closePopup(popupProfileElement))
 buttonCardClose.addEventListener('click', () => closePopup(popupCardElement))
 buttonImageClose.addEventListener('click', () => closePopup(popupImageElement))
+
+popupElement.addEventListener('click', () => closePopup(popupProfileElement))
+popupElement.addEventListener('click', () => closePopup(popupCardElement))
+popupElement.addEventListener('click', () => closePopup(popupImageElement))
 
 profileForm.addEventListener('submit', submitProfileForm)
 cardForm.addEventListener('submit', submitCardForm)

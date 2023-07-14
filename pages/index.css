@@ -36,3 +36,6 @@
 @import '../blocks/popup-image/__photo/popup-image__photo.css';
 @import '../blocks/popup-image/__content/popup-image__content.css';
 @import '../blocks/_opened/popup_opened.css';
+
+@import '../blocks/popup/__input-error/form__input-error.css';
+@import '../blocks/popup/_active/form__input-error_active.css';

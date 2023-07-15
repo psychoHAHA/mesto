@@ -31,7 +31,6 @@ const nameEdit = document.querySelector('.profile__title')
 const infoEdit = document.querySelector('.profile__subtitle')
 const inputEditName = document.querySelector('.popup__input_edit_profile-name')
 const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
-const formElement = document.querySelector('.popup__form')
 
 // Закрываем и открываем попапы
 

@@ -13,7 +13,6 @@ const buttonImageClose = document.querySelector('.popup-image__button-close')
 
 const buttonEdit = document.querySelector('.profile__button-edit')
 const buttonAdd = document.querySelector('.profile__button')
-const popupProfileButton = document.querySelector('.popup-profile__button')
 
 const profileForm = document.querySelector('.popup-profile__form')
 const popupCard = document.querySelector('.popup-card')

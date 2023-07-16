@@ -40,3 +40,5 @@
 @import '../blocks/popup/__input-error/form__input-error.css';
 @import '../blocks/popup/_active/form__input-error_active.css';
 @import '../blocks/popup/_type_error/popup__input_type_error.css';
+@import '../blocks/popup/_disabled/popup__button_disabled.css';
+

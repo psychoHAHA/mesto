@@ -1,24 +1,23 @@
-.popup_card__button {
-  background: transparent;
-  border: none;
-  background-image: url(../../../images/submitButton320.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 238px;
-  height: 46px;
-  margin-top: 15px;
+.popup-card__button {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  background-color: #000;
+  width: 358px;
+  height: 50px;
+  border-radius: 2px;
+  padding: 0;
   cursor: pointer;
+  color: #fff;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.popup_card__button:hover {
+.popup-card__button:hover {
   opacity: 0.8;
-}
-
-@media screen and (min-width: 880px) {
- .popup_card__button {
-    margin-top: 18px;
-    padding: 0;
-    background-image: url(../../../images/submitButton880.svg);
-    width: 358px;
-  }
 }

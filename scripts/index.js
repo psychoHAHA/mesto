@@ -12,7 +12,7 @@ const buttonCardClose = document.querySelector('.popup-card__button-close')
 const buttonImageClose = document.querySelector('.popup-image__button-close')
 
 const buttonProfileSubmit = document.querySelector('.popup-profile__button')
-const buttonCardSubmit = popupCardElement.querySelector('.popup__button')
+const buttonCardSubmit = document.querySelector('.popup-card__button')
 
 const buttonEdit = document.querySelector('.profile__button-edit')
 const buttonAdd = document.querySelector('.profile__button')
@@ -119,12 +119,9 @@ function submitCardForm (evt) {
   
   const newGroupCard = {name: groupInputTitle.value, link: groupInputUrl.value}
 
-  renderCard(newGroupCard)
-
   cardForm.reset()
-
-  disabledButton(buttonCardSubmit, VALIDATION_CONFIG)
-  
+  enabledButton(buttonCardSubmit, VALIDATION_CONFIG)
+  renderCard(newGroupCard)
   closePopup(popupCardElement)
 }
 

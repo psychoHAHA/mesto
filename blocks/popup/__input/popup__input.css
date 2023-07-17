@@ -13,10 +13,6 @@
   padding: 0;
 }
 
-.popup__input:nth-child(3) {
-  margin-top: 30px;
-}
-
 .popup__input:focus {
   outline: none;
 }

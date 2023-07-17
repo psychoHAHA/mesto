@@ -2,7 +2,7 @@
 
 // Попапы
 
-const closePopupByOverlay = document.querySelectorAll('.popup')
+const popups = document.querySelectorAll('.popup')
 const popupProfileElement = document.querySelector('.popup-profile')
 const popupCardElement = document.querySelector('.popup-card')
 const popupImageElement = document.querySelector('.popup-image')
@@ -10,6 +10,9 @@ const popupImageElement = document.querySelector('.popup-image')
 const buttonProfileClose = document.querySelector('.popup-profile__button-close')
 const buttonCardClose = document.querySelector('.popup-card__button-close')
 const buttonImageClose = document.querySelector('.popup-image__button-close')
+
+const buttonProfileSubmit = document.querySelector('.popup-profile__button')
+const buttonCardSubmit = popupCardElement.querySelector('.popup__button')
 
 const buttonEdit = document.querySelector('.profile__button-edit')
 const buttonAdd = document.querySelector('.profile__button')
@@ -35,24 +38,26 @@ const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
 
 function openPopup(evt) {
   evt.classList.add('popup_opened')
-  document.addEventListener('keydown', closePopupEsc)
+  document.addEventListener('keydown', closePopupByEsc)
 }
 
 function closePopup(evt) {
   evt.classList.remove('popup_opened')
-  document.removeEventListener('keydown', closePopupEsc)
+  document.removeEventListener('keydown', closePopupByEsc)
 }
 
-function closePopupEsc(evt) {
+function closePopupByEsc(evt) {
   if (evt.key === 'Escape') {
     const popup = document.querySelector('.popup_opened')
     closePopup(popup)
   }
 }
 
-for (let i = 0; i < closePopupByOverlay.length; ++i) {
-  closePopupByOverlay[i].addEventListener('click', (e) => {
-    closePopup(e.target)
+for (let i = 0; i < popups.length; ++i) {
+  popups[i].addEventListener('click', (evt) => {
+    if (evt.currentTarget === evt.target) {
+      closePopup(evt.target)
+    }
   })
 }
 
@@ -109,13 +114,17 @@ function renderCard(item) {
 
 // Добавление новой карточки 
 
-function submitCardForm (e) {
-  e.preventDefault()
+function submitCardForm (evt) {
+  evt.preventDefault()
   
   const newGroupCard = {name: groupInputTitle.value, link: groupInputUrl.value}
 
   renderCard(newGroupCard)
+
   cardForm.reset()
+
+  disabledButton(buttonCardSubmit, VALIDATION_CONFIG)
+  
   closePopup(popupCardElement)
 }
 

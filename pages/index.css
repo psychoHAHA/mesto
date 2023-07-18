@@ -39,5 +39,5 @@
 
 @import '../blocks/popup/_active/popup__input-error_active.css';
 @import '../blocks/popup/_disabled/popup__button_disabled.css';
-@import '../blocks/popup/_active/popup__input-error_active.css';
 @import '../blocks/popup/__input-error/popup__input-error.css';
+@import '../blocks/popup/_active/popup__input-error_active.css';

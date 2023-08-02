@@ -28,13 +28,13 @@ class FormValidator {
   }
 
   _enabledButton() {
-    this._buttonElement.setAttribute('disabled', true);
-    this._buttonElement.classList.add(this._config.inactiveButtonClass);
+    this._buttonElement.setAttribute('disabled', true)
+    this._buttonElement.classList.add(this._config.inactiveButtonClass)
   }
 
   _disabledButton() {
-    this._buttonElement.removeAttribute('disabled');
-    this._buttonElement.classList.remove(this._config.inactiveButtonClass);
+    this._buttonElement.removeAttribute('disabled')
+    this._buttonElement.classList.remove(this._config.inactiveButtonClass)
   }
 
   _toggleButtonState() {

@@ -83,6 +83,10 @@ function submitCardForm (evt) {
   
   const newGroupCard = {name: groupInputTitle.value, link: groupInputUrl.value}
   cardForm.reset()
+
+  buttonCardSubmit.setAttribute('disabled', true)
+  buttonCardSubmit.classList.add('popup__button_disabled')
+
   renderCard(newGroupCard)
   closePopup(popupCardElement)
 }

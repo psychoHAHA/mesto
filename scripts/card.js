@@ -1,5 +1,6 @@
 const popupElement = document.querySelector('.popup-image')
 const popupImage = document.querySelector('.popup-image__photo')
+const popupImageTitle = document.querySelector('.popup-image__title')
 
 class Card {
   constructor(data) {
@@ -30,6 +31,7 @@ class Card {
 
   _handleOpenPopupImage() {
     popupImage.src = this._link
+    popupImageTitle.textContent = this._alt
     popupElement.classList.add('popup_opened')
   }
 
@@ -40,7 +42,8 @@ class Card {
     const deleteButton = this._newCard.querySelector('.group__button-delete')
     deleteButton.addEventListener('click', () => this._handleClickDelete())
 
-    this._newCard.addEventListener('click', () => {
+    const cardImage = this._newCard.querySelector('.group__image')
+    cardImage.addEventListener('click', () => {
       this._handleOpenPopupImage()
     })
   }

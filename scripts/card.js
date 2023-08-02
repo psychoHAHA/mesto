@@ -1,35 +1,57 @@
-const groupTitle = document.querySelector('.group__title')
-const buttonLike = document.querySelector('.group__button')
-const buttonDelete = document.querySelector('.group__button-delete')
-const groupImage = document.querySelector('.group__image')
-const groupElement = document.querySelector('.group')
+const popupElement = document.querySelector('.popup-image')
+const popupImage = document.querySelector('.popup-image__photo')
 
 class Card {
-  constructor(data, templateElement) {
+  constructor(data) {
     this._name = data.name
-    this._image = data.link
-    this._templateElement = templateElement
+    this._link = data.link
+    this._alt = data.name
   }
 
   _getTemplate() {
-    const cardElement = document.querySelector(this._templateElement).content.querySelector('.group__element').cloneNode(true)
-    
-    return cardElement
+    const newTemplate = document.querySelector("#template-element").content.querySelector('.group__element').cloneNode(true)
+
+    return newTemplate
+  }
+
+  
+  _setData() {
+    const cardTitle = this._newCard.querySelector('.group__title')
+    const cardImage = this._newCard.querySelector('.group__image')
+
+    cardTitle.textContent = this._name
+    cardImage.src = this._link
+    cardImage.alt = this._alt
+  }
+
+  _handleClickDelete() {
+    this._newCard.remove()
+  }
+
+  _handleOpenPopupImage() {
+    popupImage.src = this._link
+    popupElement.classList.add('popup_opened')
+  }
+
+  _setListeners() {
+    const likeButton = this._newCard.querySelector('.group__button')
+    likeButton.addEventListener('click', () => likeButton.classList.toggle('group__button_active'))
+
+    const deleteButton = this._newCard.querySelector('.group__button-delete')
+    deleteButton.addEventListener('click', () => this._handleClickDelete())
+
+    this._newCard.addEventListener('click', () => {
+      this._handleOpenPopupImage()
+    })
   }
 
   generateCard() {
-    this._element = this._getTemplate()
+    this._newCard = this._getTemplate()
+    this._setData()
+    this._setListeners()
 
-    this._element.querySelector('.group__title').textContent = this._name
-    this._element.querySelector('.group__image').src = this._image
-
-    return this._element
+    return this._newCard
   }
 }
 
-initialCards.forEach((item) => {
-  const card = new Card(item, '.card')
-  const cardElement = card.generateCard()
-
-  document.querySelector('.group').prepend(cardElement)
-})
+export default Card

@@ -1,7 +1,10 @@
-import Card from "./card.js"
+<<<<<<< HEAD
+import Card from "./Card.js"
 import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
 
+=======
+>>>>>>> 82b24f953e256f3687b76f955260586de516ed06
 // Переменные
 
 // Попапы
@@ -23,10 +26,15 @@ const buttonAdd = document.querySelector('.profile__button')
 
 const profileForm = document.querySelector('.popup-profile__form')
 const popupCard = document.querySelector('.popup-card')
+const templateElement = document.querySelector('#template-element').content
 const group = document.querySelector('.group')
 const cardForm = popupCard.querySelector('.popup-card__form')
 const groupInputTitle = popupCard.querySelector('.popup-card__input_edit_image-name')
 const groupInputUrl = popupCard.querySelector('.popup-card__input_edit_image-url')
+const groupTitle = popupCard.querySelector('.group__title')
+const groupImage = popupCard.querySelector('.group__image')
+const popupImagePhoto = document.querySelector('.popup-image__photo')
+const popupImageTitle = document.querySelector('.popup-image__title')
 
 const nameEdit = document.querySelector('.profile__title')
 const infoEdit = document.querySelector('.profile__subtitle')
@@ -74,7 +82,42 @@ function submitProfileForm (evt) {
 
 // end
 
-// 
+// Добавляем картинки на страницу через js
+
+function createCard({name, link}) {
+  const groupElement = templateElement.cloneNode(true)
+  const groupTitle = groupElement.querySelector('.group__title')
+  const buttonLike = groupElement.querySelector('.group__button')
+  const buttonDelete = groupElement.querySelector('.group__button-delete')
+  const groupImage = groupElement.querySelector('.group__image')
+
+  groupTitle.textContent = name
+  groupImage.src = link
+  groupImage.alt = name
+
+  groupImage.addEventListener('click', () => {
+    popupImagePhoto.src = link
+    popupImagePhoto.alt = name
+    popupImageTitle.textContent = name
+
+    openPopup(popupImageElement)
+  })
+
+  buttonLike.addEventListener('click', () => {
+    buttonLike.classList.toggle('group__button_active')
+  })
+
+  buttonDelete.addEventListener('click', () => {
+    const cardDelete = buttonDelete.closest('.group__element')
+    cardDelete.remove()
+  })
+
+  return groupElement
+}
+
+function renderCard(item) {
+  group.prepend(createCard(item))
+}
 
 // Добавление новой карточки 
 
@@ -82,20 +125,17 @@ function submitCardForm (evt) {
   evt.preventDefault()
   
   const newGroupCard = {name: groupInputTitle.value, link: groupInputUrl.value}
+
   cardForm.reset()
-  this._disabledButton(buttonCardSubmit)
+<<<<<<< HEAD
+=======
+  enabledButton(buttonCardSubmit, VALIDATION_CONFIG)
+>>>>>>> 82b24f953e256f3687b76f955260586de516ed06
   renderCard(newGroupCard)
   closePopup(popupCardElement)
 }
 
 // end
-
-// Рендер карточки
-
-const renderCard = (item) => {
-  const card = new Card(item)
-  group.prepend(card.generateCard())
-} 
 
 // Достаем элементы из массива
 
@@ -121,11 +161,3 @@ buttonImageClose.addEventListener('click', () => closePopup(popupImageElement))
 
 profileForm.addEventListener('submit', submitProfileForm)
 cardForm.addEventListener('submit', submitCardForm)
-
-// Валидация 
-
-const validPopupProfile = new FormValidator(VALIDATION_CONFIG, popupProfileElement)
-validPopupProfile.enableValidation()
-
-const validPopupCard = new FormValidator(VALIDATION_CONFIG, popupCardElement)
-validPopupCard.enableValidation()

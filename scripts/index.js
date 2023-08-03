@@ -15,7 +15,6 @@ const buttonProfileClose = document.querySelector('.popup-profile__button-close'
 const buttonCardClose = document.querySelector('.popup-card__button-close')
 const buttonImageClose = document.querySelector('.popup-image__button-close')
 
-const buttonProfileSubmit = document.querySelector('.popup-profile__button')
 const buttonCardSubmit = document.querySelector('.popup-card__button')
 
 const buttonEdit = document.querySelector('.profile__button-edit')
@@ -74,7 +73,14 @@ function submitProfileForm (evt) {
 
 // end
 
-// 
+// Кнопка 
+
+const disabledButton = () => {
+  buttonCardSubmit.setAttribute('disabled', true)
+  buttonCardSubmit.classList.add('popup__button_disabled')
+}
+
+// end
 
 // Добавление новой карточки 
 
@@ -84,8 +90,7 @@ function submitCardForm (evt) {
   const newGroupCard = {name: groupInputTitle.value, link: groupInputUrl.value}
   cardForm.reset()
 
-  buttonCardSubmit.setAttribute('disabled', true)
-  buttonCardSubmit.classList.add('popup__button_disabled')
+  disabledButton()
 
   renderCard(newGroupCard)
   closePopup(popupCardElement)
@@ -96,7 +101,7 @@ function submitCardForm (evt) {
 // Рендер карточки
 
 const renderCard = (item) => {
-  const card = new Card(item)
+  const card = new Card(item, openPopup)
   group.prepend(card.generateCard())
 } 
 

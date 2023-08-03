@@ -1,3 +1,7 @@
+const popupElement = document.querySelector('.popup-image')
+const popupImage = document.querySelector('.popup-image__photo')
+const popupImageTitle = document.querySelector('.popup-image__title')
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -26,7 +30,7 @@ const initialCards = [
 ];
 
 const VALIDATION_CONFIG = ({
-  formSelector: '.popup__form',
+  formElement: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
@@ -34,4 +38,4 @@ const VALIDATION_CONFIG = ({
   errorClass: 'popup__input-error_active'
 })
 
-export { initialCards, VALIDATION_CONFIG }
+export { initialCards, VALIDATION_CONFIG, popupElement, popupImage, popupImageTitle }

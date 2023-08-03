@@ -1,12 +1,11 @@
-const popupElement = document.querySelector('.popup-image')
-const popupImage = document.querySelector('.popup-image__photo')
-const popupImageTitle = document.querySelector('.popup-image__title')
+import { popupElement, popupImage, popupImageTitle } from './constants.js'
 
 class Card {
-  constructor(data) {
+  constructor(data, openPopup) {
     this._name = data.name
     this._link = data.link
     this._alt = data.name
+    this._openPopup = openPopup
   }
 
   _getTemplate() {
@@ -32,7 +31,8 @@ class Card {
   _handleOpenPopupImage() {
     popupImage.src = this._link
     popupImageTitle.textContent = this._alt
-    popupElement.classList.add('popup_opened')
+    
+    this._openPopup(popupElement)
   }
 
   _setListeners() {

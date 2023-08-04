@@ -30,7 +30,8 @@ class Card {
 
   _handleOpenPopupImage() {
     popupImage.src = this._link
-    popupImageTitle.textContent = this._alt
+    popupImageTitle.textContent = this._name
+    popupImage.alt = this._alt
     
     this._openPopup(popupElement)
   }

@@ -73,15 +73,6 @@ function submitProfileForm (evt) {
 
 // end
 
-// Кнопка 
-
-const disabledButton = () => {
-  buttonCardSubmit.setAttribute('disabled', true)
-  buttonCardSubmit.classList.add('popup__button_disabled')
-}
-
-// end
-
 // Добавление новой карточки 
 
 function submitCardForm (evt) {
@@ -90,7 +81,7 @@ function submitCardForm (evt) {
   const newGroupCard = {name: groupInputTitle.value, link: groupInputUrl.value}
   cardForm.reset()
 
-  disabledButton()
+  validPopupCard.disabledButton()
 
   renderCard(newGroupCard)
   closePopup(popupCardElement)

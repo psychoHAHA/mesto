@@ -1,6 +1,7 @@
 import Card from "./card.js"
 import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
+import Section from "./Section.js"
 
 // Переменные
 
@@ -14,8 +15,6 @@ const popupImageElement = document.querySelector('.popup-image')
 const buttonProfileClose = document.querySelector('.popup-profile__button-close')
 const buttonCardClose = document.querySelector('.popup-card__button-close')
 const buttonImageClose = document.querySelector('.popup-image__button-close')
-
-const buttonCardSubmit = document.querySelector('.popup-card__button')
 
 const buttonEdit = document.querySelector('.profile__button-edit')
 const buttonAdd = document.querySelector('.profile__button')

@@ -1,4 +1,4 @@
-import { popupElement, popupImage, popupImageTitle } from './constants.js'
+import { popupImageElement, popupImage, popupImageTitle } from './constants.js'
 
 class Card {
   constructor(data, openPopup) {
@@ -29,7 +29,7 @@ class Card {
   }
 
   _handleOpenPopupImage() {
-    popupImage.src = this._link
+    popupImageElement.src = this._link
     popupImageTitle.textContent = this._name
     popupImage.alt = this._alt
     

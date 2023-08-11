@@ -1,7 +1,7 @@
+import Section from "./Section.js"
 import Card from "./card.js"
 import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
-import Section from "./Section.js"
 
 // Переменные
 

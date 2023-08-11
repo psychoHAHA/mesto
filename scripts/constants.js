@@ -1,8 +1,9 @@
-const popupElement = document.querySelector('.popup-image')
+const popupElement = document.querySelector('.popup')
+const popupImageElement = document.querySelector('.popup-image')
 const popupImage = document.querySelector('.popup-image__photo')
 const popupImageTitle = document.querySelector('.popup-image__title')
 
-const items = [
+const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -38,4 +39,4 @@ const VALIDATION_CONFIG = ({
   errorClass: 'popup__input-error_active'
 })
 
-export { items, VALIDATION_CONFIG, popupElement, popupImage, popupImageTitle }
+export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle }

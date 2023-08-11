@@ -1,6 +1,7 @@
-import { popupImageElement, popupImage, popupImageTitle } from './constants.js'
+import { popupImageElement } from './constants.js'
+import PopupWithImage from './PopupWithImage.js'
 
-class Card {
+export default class Card {
   constructor(data, openPopup) {
     this._name = data.name
     this._link = data.link
@@ -29,11 +30,8 @@ class Card {
   }
 
   _handleOpenPopupImage() {
-    popupImageElement.src = this._link
-    popupImageTitle.textContent = this._name
-    popupImage.alt = this._alt
-    
-    this._openPopup(popupElement)
+    const handlePopup = new PopupWithImage()
+    handlePopup.openPopup(popupImageElement)
   }
 
   _setListeners() {
@@ -45,7 +43,8 @@ class Card {
 
     const cardImage = this._newCard.querySelector('.group__image')
     cardImage.addEventListener('click', () => {
-      this._handleOpenPopupImage()
+      const handlePopup = new PopupWithImage()
+      handlePopup.openPopup(popupImageElement)
     })
   }
 
@@ -57,5 +56,3 @@ class Card {
     return this._newCard
   }
 }
-
-export default Card

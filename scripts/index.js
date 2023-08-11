@@ -1,7 +1,7 @@
-import Section from "./Section.js"
 import Card from "./card.js"
 import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
+import Popup from "./Popup.js"
 
 // Переменные
 
@@ -11,10 +11,6 @@ const popups = document.querySelectorAll('.popup')
 const popupProfileElement = document.querySelector('.popup-profile')
 const popupCardElement = document.querySelector('.popup-card')
 const popupImageElement = document.querySelector('.popup-image')
-
-const buttonProfileClose = document.querySelector('.popup-profile__button-close')
-const buttonCardClose = document.querySelector('.popup-card__button-close')
-const buttonImageClose = document.querySelector('.popup-image__button-close')
 
 const buttonEdit = document.querySelector('.profile__button-edit')
 const buttonAdd = document.querySelector('.profile__button')
@@ -31,34 +27,34 @@ const infoEdit = document.querySelector('.profile__subtitle')
 const inputEditName = document.querySelector('.popup__input_edit_profile-name')
 const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
 
-// Закрываем и открываем попапы
+// // Закрываем и открываем попапы
 
-function openPopup(evt) {
-  evt.classList.add('popup_opened')
-  document.addEventListener('keydown', closePopupByEsc)
-}
+// function openPopup(evt) {
+//   evt.classList.add('popup_opened')
+//   document.addEventListener('keydown', closePopupByEsc)
+// }
 
-function closePopup(evt) {
-  evt.classList.remove('popup_opened')
-  document.removeEventListener('keydown', closePopupByEsc)
-}
+// function closePopup(evt) {
+//   evt.classList.remove('popup_opened')
+//   document.removeEventListener('keydown', closePopupByEsc)
+// }
 
-function closePopupByEsc(evt) {
-  if (evt.key === 'Escape') {
-    const popup = document.querySelector('.popup_opened')
-    closePopup(popup)
-  }
-}
+// function closePopupByEsc(evt) {
+//   if (evt.key === 'Escape') {
+//     const popup = document.querySelector('.popup_opened')
+//     closePopup(popup)
+//   }
+// }
 
-for (let i = 0; i < popups.length; ++i) {
-  popups[i].addEventListener('click', (evt) => {
-    if (evt.currentTarget === evt.target) {
-      closePopup(evt.target)
-    }
-  })
-}
+// for (let i = 0; i < popups.length; ++i) {
+//   popups[i].addEventListener('click', (evt) => {
+//     if (evt.currentTarget === evt.target) {
+//       closePopup(evt.target)
+//     }
+//   })
+// }
 
-// end
+// // end
 
 // Редактируем профиль 
 
@@ -67,7 +63,7 @@ function submitProfileForm (evt) {
   nameEdit.textContent = inputEditName.value
   infoEdit.textContent = inputEditInfo.value
 
-  closePopup(popupProfileElement)
+  handlePopup.closePopup(popupProfileElement)
 }
 
 // end
@@ -83,7 +79,7 @@ function submitCardForm (evt) {
   validPopupCard.disabledButton()
 
   renderCard(newGroupCard)
-  closePopup(popupCardElement)
+  handlePopup.closePopup(popupCardElement)
 }
 
 // end
@@ -91,7 +87,8 @@ function submitCardForm (evt) {
 // Рендер карточки
 
 const renderCard = (item) => {
-  const card = new Card(item, openPopup)
+  const handlePopup = new Popup()
+  const card = new Card(item, handlePopup)
   group.prepend(card.generateCard())
 } 
 
@@ -106,16 +103,12 @@ initialCards.forEach((item) => {
 // Подключаем функции 
 
 buttonEdit.addEventListener('click', () => {
-  openPopup(popupProfileElement)
+ handlePopup.openPopup(popupProfileElement)
 })
 
 buttonAdd.addEventListener('click', () => {
-  openPopup(popupCardElement)
+  handlePopup.openPopup(popupCardElement)
 })
-
-buttonProfileClose.addEventListener('click', () => closePopup(popupProfileElement))
-buttonCardClose.addEventListener('click', () => closePopup(popupCardElement))
-buttonImageClose.addEventListener('click', () => closePopup(popupImageElement))
 
 profileForm.addEventListener('submit', submitProfileForm)
 cardForm.addEventListener('submit', submitCardForm)
@@ -127,3 +120,6 @@ validPopupProfile.enableValidation()
 
 const validPopupCard = new FormValidator(VALIDATION_CONFIG, popupCardElement)
 validPopupCard.enableValidation()
+
+const handlePopup = new Popup()
+handlePopup.setEventListeners()

@@ -1,5 +1,3 @@
-import { initialCards } from "./constants"
-
 export default class Section {
   constructor({ renderer }, groupSelector) {
     this._rendererItems = initialCards

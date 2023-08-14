@@ -1,4 +1,4 @@
-import Card from "./card.js"
+import Card from "./Card.js"
 import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
 import Popup from "./Popup.js"
@@ -63,7 +63,7 @@ function submitProfileForm (evt) {
   nameEdit.textContent = inputEditName.value
   infoEdit.textContent = inputEditInfo.value
 
-  handlePopup.closePopup(popupProfileElement)
+  handlePopup.close(popupProfileElement)
 }
 
 // end
@@ -79,7 +79,7 @@ function submitCardForm (evt) {
   validPopupCard.disabledButton()
 
   renderCard(newGroupCard)
-  handlePopup.closePopup(popupCardElement)
+  handlePopup.close(popupCardElement)
 }
 
 // end
@@ -103,11 +103,11 @@ initialCards.forEach((item) => {
 // Подключаем функции 
 
 buttonEdit.addEventListener('click', () => {
- handlePopup.openPopup(popupProfileElement)
+ handlePopup.open(popupProfileElement)
 })
 
 buttonAdd.addEventListener('click', () => {
-  handlePopup.openPopup(popupCardElement)
+  handlePopup.open(popupCardElement)
 })
 
 profileForm.addEventListener('submit', submitProfileForm)

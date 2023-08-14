@@ -9,7 +9,7 @@ export default class PopupWithImage extends Popup{
     this._alt = name
   }
 
-  openPopup() {
+  open() {
     popupImage.src = this._link
     popupImageTitle.textContent = this._name
     popupImage.alt = this._alt

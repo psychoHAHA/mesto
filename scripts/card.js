@@ -31,7 +31,7 @@ export default class Card {
 
   _handleOpenPopupImage() {
     const handlePopup = new PopupWithImage()
-    handlePopup.openPopup(popupImageElement)
+    handlePopup.open(popupImageElement)
   }
 
   _setListeners() {
@@ -44,7 +44,7 @@ export default class Card {
     const cardImage = this._newCard.querySelector('.group__image')
     cardImage.addEventListener('click', () => {
       const handlePopup = new PopupWithImage()
-      handlePopup.openPopup(popupImageElement)
+      handlePopup.open(popupImageElement)
     })
   }
 

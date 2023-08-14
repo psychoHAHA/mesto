@@ -12,12 +12,12 @@ export default class Popup {
     this._popupSelector = popupSelector
   }
 
-  openPopup(evt) {
+  open(evt) {
     evt.classList.add('popup_opened')
     document.addEventListener('keydown', this._handleEscClose)
   }
 
-  closePopup(evt) {
+  close(evt) {
     evt.classList.remove('popup_opened')
     document.removeEventListener('keydown', this._handleEscClose)
   }
@@ -25,19 +25,19 @@ export default class Popup {
   _handleEscClose(evt) {
     if (evt.key === 'Escape') {
       const popup = document.querySelector('popup_opened')
-      this.closePopup(popup)
+      this.close(popup)
     }
   }
   
   setEventListeners() {
-    buttonProfileClose.addEventListener('click', () => this.closePopup(popupProfileElement))
-    buttonCardClose.addEventListener('click', () => this.closePopup(popupCardElement))
-    buttonImageClose.addEventListener('click', () => this.closePopup(popupImageElement))
+    buttonProfileClose.addEventListener('click', () => this.close(popupProfileElement))
+    buttonCardClose.addEventListener('click', () => this.close(popupCardElement))
+    buttonImageClose.addEventListener('click', () => this.close(popupImageElement))
 
     for (let i = 0; i < popupElement.length; ++i) {
       popupElement[i].addEventListener('click', (evt) => {
         if (evt.currentTarget === evt.target) {
-          this.closePopup(evt.target)
+          this.close(evt.target)
         }
       })
     }

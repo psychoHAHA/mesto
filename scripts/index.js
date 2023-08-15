@@ -1,4 +1,4 @@
-import Card from "./Card.js"
+import Card from "./card.js"
 import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
 import Popup from "./Popup.js"

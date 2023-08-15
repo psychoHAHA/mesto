@@ -1,9 +1,7 @@
-import Card from "./card.js"
+import Card from "./Card.js"
 import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
-import Popup from "./Popup.js"
-import PopupWithImage from "./PopupWithImage.js"
-
+import Section from './Section.js'
 // Переменные
 
 // Попапы
@@ -19,6 +17,7 @@ const buttonAdd = document.querySelector('.profile__button')
 const profileForm = document.querySelector('.popup-profile__form')
 const popupCard = document.querySelector('.popup-card')
 const group = document.querySelector('.group')
+const groupImage = document.querySelector('.group__image')
 const cardForm = popupCard.querySelector('.popup-card__form')
 const groupInputTitle = popupCard.querySelector('.popup-card__input_edit_image-name')
 const groupInputUrl = popupCard.querySelector('.popup-card__input_edit_image-url')
@@ -87,17 +86,29 @@ function submitCardForm (evt) {
 
 // Рендер карточки
 
-const renderCard = (item) => {
-  const handlePopup = new Popup()
-  const card = new Card(item, handlePopup)
-  group.prepend(card.generateCard())
-} 
+// const renderCard = (item) => {
+//   const handlePopup = new Popup()
+//   const card = new Card(item, handlePopup)
+//   group.prepend(card.generateCard())
+// } 
 
-// Достаем элементы из массива
+// // Достаем элементы из массива
 
-initialCards.forEach((item) => {
-  renderCard(item)
-})
+// initialCards.forEach((item) => {
+//   renderCard(item)
+// })
+
+const cardList = new Section({
+  data: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '.card')
+    const cardElement = card.generateCard()
+    cardList.addItem(cardElement)
+  },
+}, '.group')
+console.log(cardList)
+
+cardList.renderItems()
 
 // end
 
@@ -111,8 +122,6 @@ buttonAdd.addEventListener('click', () => {
   handlePopup.open(popupCardElement)
 })
 
-
-
 profileForm.addEventListener('submit', submitProfileForm)
 cardForm.addEventListener('submit', submitCardForm)
 
@@ -124,6 +133,5 @@ validPopupProfile.enableValidation()
 const validPopupCard = new FormValidator(VALIDATION_CONFIG, popupCardElement)
 validPopupCard.enableValidation()
 
-const handlePopup = new Popup()
-handlePopup.setEventListeners()
-
+// const handlePopup = new Popup('.popup')
+// handlePopup.setEventListeners()

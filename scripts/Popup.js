@@ -1,45 +1,38 @@
-const popupElement = document.querySelector('.popup')
-const popupProfileElement = document.querySelector('.popup-profile')
-const popupCardElement = document.querySelector('.popup-card')
-const popupImageElement = document.querySelector('.popup-image')
-
-const buttonProfileClose = document.querySelector('.popup-profile__button-close')
-const buttonCardClose = document.querySelector('.popup-card__button-close')
-const buttonImageClose = document.querySelector('.popup-image__button-close')
-
 export default class Popup {
   constructor(popupSelector) {
-    this._popupSelector = popupSelector
+    this._popup = document.querySelector(popupSelector)
+    console.log(this._popup)
+    this.open = this.open.bind(this)
+    this._buttonClose = document.querySelector('.popup__button-close')
   }
 
-  open(evt) {
-    evt.classList.add('popup_opened')
+  open() {
+    this._popup.classList.add('popup_opened')
     document.addEventListener('keydown', this._handleEscClose)
   }
 
-  close(evt) {
-    evt.classList.remove('popup_opened')
+  close() {
+    this._popup.classList.remove('popup_opened')
     document.removeEventListener('keydown', this._handleEscClose)
   }
 
-  _handleEscClose(evt) {
+  _handleEscClose = (evt) => {
     if (evt.key === 'Escape') {
-      const popup = document.querySelector('popup_opened')
-      this.close(popup)
+      this.close()
     }
+  }
+
+  _handleOverlayClosePopup = (evt) => {
+    if (evt.target === evt.currentTarget) {
+      this.close();
+    };
   }
   
   setEventListeners() {
-    buttonProfileClose.addEventListener('click', () => this.close(popupProfileElement))
-    buttonCardClose.addEventListener('click', () => this.close(popupCardElement))
-    buttonImageClose.addEventListener('click', () => this.close(popupImageElement))
+    this._buttonClose.addEventListener('click', () => {
+      this.close()
+    })
 
-    for (let i = 0; i < popupElement.length; ++i) {
-      popupElement[i].addEventListener('click', (evt) => {
-        if (evt.currentTarget === evt.target) {
-          this.close(evt.target)
-        }
-      })
-    }
+    this._popup.addEventListener('mousedown', this._handleOverlayClosePopup);
   }
 }

@@ -1,5 +1,5 @@
 export default class Section {
-  constructor({ renderer }, groupSelector) {
+  constructor({ initialCards, renderer }, groupSelector) {
     this._rendererItems = initialCards
     this._renderer = renderer
     this._groupElement = document.querySelector(groupSelector)

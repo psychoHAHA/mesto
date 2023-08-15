@@ -2,6 +2,7 @@ import Card from "./Card.js"
 import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
 import Popup from "./Popup.js"
+import PopupWithImage from "./PopupWithImage.js"
 
 // Переменные
 
@@ -100,7 +101,7 @@ initialCards.forEach((item) => {
 
 // end
 
-// Подключаем функции 
+// Подключаем функции
 
 buttonEdit.addEventListener('click', () => {
  handlePopup.open(popupProfileElement)
@@ -109,6 +110,8 @@ buttonEdit.addEventListener('click', () => {
 buttonAdd.addEventListener('click', () => {
   handlePopup.open(popupCardElement)
 })
+
+
 
 profileForm.addEventListener('submit', submitProfileForm)
 cardForm.addEventListener('submit', submitCardForm)
@@ -123,3 +126,4 @@ validPopupCard.enableValidation()
 
 const handlePopup = new Popup()
 handlePopup.setEventListeners()
+

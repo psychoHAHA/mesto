@@ -29,9 +29,8 @@ export default class Card {
     this._newCard.remove()
   }
 
-  _handleOpenPopupImage() {
-    const handlePopup = new PopupWithImage()
-    handlePopup.open(popupImageElement)
+  _handleOpenPopup() {
+    
   }
 
   _setListeners() {
@@ -40,12 +39,6 @@ export default class Card {
 
     const deleteButton = this._newCard.querySelector('.group__button-delete')
     deleteButton.addEventListener('click', () => this._handleClickDelete())
-
-    const cardImage = this._newCard.querySelector('.group__image')
-    cardImage.addEventListener('click', () => {
-      const handlePopup = new PopupWithImage()
-      handlePopup.open(popupImageElement)
-    })
   }
 
   generateCard() {

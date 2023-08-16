@@ -36,7 +36,7 @@ export default class Card {
 
   _handleClosePopup() {
     const popupImage = new PopupWithImage('.popup-image')
-    popupImage.close(this._name, this._link)
+    popupImage.close()
   }
 
   _setListeners() {

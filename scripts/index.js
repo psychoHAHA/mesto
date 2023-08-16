@@ -3,6 +3,7 @@ import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
 import Section from './Section.js'
 import Popup from "./Popup.js"
+import PopupWithImage from "./PopupWithImage.js"
 // import PopupWithForm from "./PopupWithForm.js"
 // Переменные
 
@@ -28,6 +29,13 @@ const nameEdit = document.querySelector('.profile__title')
 const infoEdit = document.querySelector('.profile__subtitle')
 const inputEditName = document.querySelector('.popup__input_edit_profile-name')
 const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
+
+// Экземпляры
+
+const handlePopup = new Popup('.popup')
+handlePopup.setEventListeners()
+
+// end 
 
 // // Закрываем и открываем попапы
 
@@ -99,18 +107,6 @@ function submitCardForm (evt) {
 
 // Рендер карточки
 
-// const renderCard = (item) => {
-//   const handlePopup = new Popup()
-//   const card = new Card(item, handlePopup)
-//   group.prepend(card.generateCard())
-// } 
-
-// // Достаем элементы из массива
-
-// initialCards.forEach((item) => {
-//   renderCard(item)
-// })
-
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
@@ -126,19 +122,22 @@ cardList.renderItems()
 
 // Подключаем функции
 
-const handlePopup = new Popup('.popup')
-handlePopup.setEventListeners()
+const openPopupProfile = () => {
+  const handlePopupProfile = new Popup('.popup-profile')
+  handlePopupProfile.open(popupProfileElement)
+}
 
-buttonEdit.addEventListener('click', () => {
- handlePopup.open(popupProfileElement)
-})
+const openPopupCard = () => {
+  const handlePopupCard = new Popup('.popup-card')
+  handlePopupCard.open(popupCardElement)
+}
 
-buttonAdd.addEventListener('click', () => {
-  handlePopup.open(popupCardElement)
-})
+buttonEdit.addEventListener('click', openPopupProfile)
+
+buttonAdd.addEventListener('click', openPopupCard)
 
 profileForm.addEventListener('submit', submitProfileForm)
-// cardForm.addEventListener('submit', submitCardForm)
+cardForm.addEventListener('submit', submitCardForm)
 
 // Валидация 
 

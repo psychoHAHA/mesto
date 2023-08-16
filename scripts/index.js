@@ -2,6 +2,8 @@ import Card from "./Card.js"
 import FormValidator from "./FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
 import Section from './Section.js'
+import Popup from "./Popup.js"
+// import PopupWithForm from "./PopupWithForm.js"
 // Переменные
 
 // Попапы
@@ -66,6 +68,13 @@ function submitProfileForm (evt) {
   handlePopup.close(popupProfileElement)
 }
 
+// const popupEditProfile = new PopupWithForm({
+//   selector: '.popup__form',
+//   handleFormSubmit: (formData) => {
+//     const formElement = form.
+//   }
+// })
+
 // end
 
 // Добавление новой карточки 
@@ -81,6 +90,10 @@ function submitCardForm (evt) {
   renderCard(newGroupCard)
   handlePopup.close(popupCardElement)
 }
+
+// const popupEditCard = mew PopupWithForm {
+
+// }
 
 // end
 
@@ -106,13 +119,15 @@ const cardList = new Section({
     cardList.addItem(cardElement)
   },
 }, '.group')
-console.log(cardList)
 
 cardList.renderItems()
 
 // end
 
 // Подключаем функции
+
+const handlePopup = new Popup('.popup')
+handlePopup.setEventListeners()
 
 buttonEdit.addEventListener('click', () => {
  handlePopup.open(popupProfileElement)
@@ -123,7 +138,7 @@ buttonAdd.addEventListener('click', () => {
 })
 
 profileForm.addEventListener('submit', submitProfileForm)
-cardForm.addEventListener('submit', submitCardForm)
+// cardForm.addEventListener('submit', submitCardForm)
 
 // Валидация 
 
@@ -132,6 +147,3 @@ validPopupProfile.enableValidation()
 
 const validPopupCard = new FormValidator(VALIDATION_CONFIG, popupCardElement)
 validPopupCard.enableValidation()
-
-// const handlePopup = new Popup('.popup')
-// handlePopup.setEventListeners()

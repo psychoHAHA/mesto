@@ -30,7 +30,13 @@ export default class Card {
   }
 
   _handleOpenPopup() {
-    
+    const popupImage = new PopupWithImage('.popup-image')
+    popupImage.open(this._name, this._link)
+  }
+
+  _handleClosePopup() {
+    const popupImage = new PopupWithImage('.popup-image')
+    popupImage.close(this._name, this._link)
   }
 
   _setListeners() {
@@ -39,6 +45,9 @@ export default class Card {
 
     const deleteButton = this._newCard.querySelector('.group__button-delete')
     deleteButton.addEventListener('click', () => this._handleClickDelete())
+
+    const cardImage = this._newCard.querySelector('.group__image')
+    cardImage.addEventListener('click', () => this._handleOpenPopup())
   }
 
   generateCard() {

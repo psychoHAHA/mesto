@@ -1,11 +1,10 @@
 import PopupWithImage from './PopupWithImage.js'
 
 export default class Card {
-  constructor(data, openPopup) {
+  constructor(data) {
     this._name = data.name
     this._link = data.link
     this._alt = data.name
-    this._openPopup = openPopup
   }
 
   _getTemplate() {
@@ -31,11 +30,6 @@ export default class Card {
   _handleOpenPopup() {
     const popupImage = new PopupWithImage('.popup-image')
     popupImage.open(this._name, this._link)
-  }
-
-  _handleClosePopup() {
-    const popupImage = new PopupWithImage('.popup-image')
-    popupImage.close()
   }
 
   _setListeners() {

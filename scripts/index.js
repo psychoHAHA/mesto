@@ -4,6 +4,7 @@ import { VALIDATION_CONFIG, initialCards } from "./constants.js"
 import Section from '../components/Section.js'
 import Popup from "../components/Popup.js"
 import PopupWithForm  from "../components/PopupWithForm.js"
+import PopupWithImage from '../components/PopupWithImage.js'
 
 // Переменные
 
@@ -34,6 +35,8 @@ const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
 
 const handlePopup = new Popup('.popup')
 handlePopup.setEventListeners()
+
+const popupImage = new PopupWithImage('.popup-image')
 
 // end 
 
@@ -83,10 +86,6 @@ handlePopup.setEventListeners()
 //   }
 // })
 
-const submitProfileForm = new PopupWithForm('.popup-profile', (item) => {
-  
-})
-
 // end
 
 // Добавление новой карточки 
@@ -107,10 +106,16 @@ const submitProfileForm = new PopupWithForm('.popup-profile', (item) => {
 
 // Рендер карточки
 
+function createCard() {
+  return new Card({name: groupInputTitle.value, link: groupInputUrl.value}, '.card',
+  validPopupCard.disabledButton(), 
+).generateCard()
+}
+
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '.card')
+    const card = new Card(item)
     const cardElement = card.generateCard()
     cardList.addItem(cardElement)
   },
@@ -119,10 +124,9 @@ const cardList = new Section({
 cardList.renderItems()
 
 const submitCardForm = new PopupWithForm('.popup-card', (item) => {
-  cardList.addItem(generateCard(item))
+  cardList.addItem(createCard(item))
 
   submitCardForm.close()
-  
 })
 
 submitCardForm.setEventListeners()
@@ -149,11 +153,6 @@ buttonAdd.addEventListener('click', openPopupCard)
 // profileForm.addEventListener('submit', submitProfileForm)
 // cardForm.addEventListener('submit', submitCardForm)
 
-
-cardForm.addEventListener('submit', (name, link) => {
-  openPopupCard(name, link)
-  console.log('click')
-})
 // Валидация 
 
 const validPopupProfile = new FormValidator(VALIDATION_CONFIG, popupProfileElement)

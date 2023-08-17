@@ -4,9 +4,8 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitCallback ) {
     super(popupSelector)
     this._submitCallback = submitCallback
-    this._form = document.querySelector('.popup__form')
+    this._form = this._popup.querySelector('.popup__form')
     this._inputList = this._form.querySelectorAll('.popup__input')
-    console.log(this._submitCallback)
   }
 
   _getInputValues() {

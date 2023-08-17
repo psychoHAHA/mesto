@@ -68,13 +68,13 @@ handlePopup.setEventListeners()
 
 // Редактируем профиль 
 
-function submitProfileForm (evt) {
-  evt.preventDefault()
-  nameEdit.textContent = inputEditName.value
-  infoEdit.textContent = inputEditInfo.value
+// function submitProfileForm (evt) {
+//   evt.preventDefault()
+//   nameEdit.textContent = inputEditName.value
+//   infoEdit.textContent = inputEditInfo.value
 
-  handlePopup.close(popupProfileElement)
-}
+//   handlePopup.close(popupProfileElement)
+// }
 
 // const popupEditProfile = new PopupWithForm({
 //   selector: '.popup__form',
@@ -82,6 +82,10 @@ function submitProfileForm (evt) {
 //     const formElement = form.
 //   }
 // })
+
+const submitProfileForm = new PopupWithForm('.popup-profile', (item) => {
+  
+})
 
 // end
 
@@ -114,10 +118,11 @@ const cardList = new Section({
 
 cardList.renderItems()
 
-const submitCardForm = new PopupWithForm('.card', (item) => {
+const submitCardForm = new PopupWithForm('.popup-card', (item) => {
   cardList.addItem(generateCard(item))
 
   submitCardForm.close()
+  
 })
 
 submitCardForm.setEventListeners()

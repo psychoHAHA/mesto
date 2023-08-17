@@ -4,10 +4,10 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitCallback ) {
     super(popupSelector)
     this._submitCallback = submitCallback
-    this._form = this._popup.querySelector('.popup__form')
-    this._inputList = document.querySelectorAll('.popup__input')
-    console.log(this._submitCallback);
-
+    this._form = document.querySelector('.popup__form')
+    this._inputList = this._form.querySelectorAll('.popup__input')
+    console.log(this._form);
+    console.log(this._inputList);
   }
 
   _getInputValues() {
@@ -15,14 +15,12 @@ export default class PopupWithForm extends Popup {
     this._inputList.forEach((input) => {
       this._inputElement[input.name] = input.value
     })
-    console.log(this._inputElement)
 
     return this._inputElement
   }
 
   open() {
     super.open()
-    console.log(this._inputElement)
   }
 
   close() {
@@ -30,18 +28,11 @@ export default class PopupWithForm extends Popup {
     this._form.reset()
   }
 
-  _setEventListeners() {
+  setEventListeners() {
     super.setEventListeners()
-    this._form.addEventListeners('submit', (evt) => {
+    this._form.addEventListener('submit', (evt) => {
       evt.preventDefault()
       this._submitCallback(this._getInputValues())
     })
-  }
-
-  generate() {
-    this._element = this._getElement();
-    this._setEventListeners();
-
-  	return this._element;
   }
 }

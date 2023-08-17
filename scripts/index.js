@@ -122,6 +122,7 @@ const submitCardForm = new PopupWithForm('.card', (item) => {
 
 submitCardForm.setEventListeners()
 
+
 // end
 
 // Подключаем функции
@@ -141,8 +142,13 @@ buttonEdit.addEventListener('click', openPopupProfile)
 buttonAdd.addEventListener('click', openPopupCard)
 
 // profileForm.addEventListener('submit', submitProfileForm)
-cardForm.addEventListener('submit', submitCardForm)
+// cardForm.addEventListener('submit', submitCardForm)
 
+
+cardForm.addEventListener('submit', (name, link) => {
+  openPopupCard(name, link)
+  console.log('click')
+})
 // Валидация 
 
 const validPopupProfile = new FormValidator(VALIDATION_CONFIG, popupProfileElement)

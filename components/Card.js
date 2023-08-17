@@ -1,4 +1,3 @@
-import { popupImageElement } from './constants.js'
 import PopupWithImage from './PopupWithImage.js'
 
 export default class Card {

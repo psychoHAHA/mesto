@@ -1,8 +1,9 @@
-import Card from "./Card.js"
-import FormValidator from "./FormValidator.js"
+import Card from "../components/Card.js"
+import FormValidator from "../components/FormValidator.js"
 import { VALIDATION_CONFIG, initialCards } from "./constants.js"
-import Section from './Section.js'
-import Popup from "./Popup.js"
+import Section from '../components/Section.js'
+import Popup from "../components/Popup.js"
+import PopupWithForm  from "../components/PopupWithForm.js"
 
 // Переменные
 
@@ -98,18 +99,6 @@ function submitProfileForm (evt) {
 //   handlePopup.close(popupCardElement)
 // }
 
-// const submitCardForm = new PopupWithForm({
-//   selector: '.popup-card__form',
-//   handleFormSubmit: {formData} => {
-//     const card = new Card(formData, '.card')
-
-//     const cardElement = card.generateCard()
-
-//     cardList.addItem(cardElement)
-//   }
-// })
-
-
 // end
 
 // Рендер карточки
@@ -124,6 +113,14 @@ const cardList = new Section({
 }, '.group')
 
 cardList.renderItems()
+
+const submitCardForm = new PopupWithForm('.card', (item) => {
+  cardList.addItem(generateCard(item))
+
+  submitCardForm.close()
+})
+
+submitCardForm.setEventListeners()
 
 // end
 
@@ -143,8 +140,8 @@ buttonEdit.addEventListener('click', openPopupProfile)
 
 buttonAdd.addEventListener('click', openPopupCard)
 
-profileForm.addEventListener('submit', submitProfileForm)
-// cardForm.addEventListener('submit', submitCardForm)
+// profileForm.addEventListener('submit', submitProfileForm)
+cardForm.addEventListener('submit', submitCardForm)
 
 // Валидация 
 

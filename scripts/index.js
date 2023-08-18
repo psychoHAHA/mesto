@@ -78,10 +78,14 @@ const userInfo = new UserInfo({
 
 const popupProfileForm = new PopupWithForm('.popup-profile', () => {
   userInfo.setUserInfo(userInfo.getUserInfo())
+  popupProfileForm.close()
 })
+
+popupProfileForm.setEventListeners()
+
 buttonEdit.addEventListener('click', () => {
   popupProfileForm.open()
-  
+  validPopupProfile.disabledButton()
 })
 // function submitProfileForm (evt) {
 //   evt.preventDefault()

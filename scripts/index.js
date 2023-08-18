@@ -5,6 +5,7 @@ import Section from '../components/Section.js'
 import Popup from "../components/Popup.js"
 import PopupWithForm  from "../components/PopupWithForm.js"
 import PopupWithImage from '../components/PopupWithImage.js'
+import UserInfo from "../components/UserInfo.js"
 
 // Переменные
 
@@ -71,6 +72,15 @@ const popupImage = new PopupWithImage('.popup-image')
 
 // Редактируем профиль 
 
+
+const userInfo = new UserInfo({
+  titleSelector: '.profile__title',
+  subtitleSelector: '.profile__subtitle'
+})
+
+const popupProfileForm = new PopupWithForm({
+  
+})
 // function submitProfileForm (evt) {
 //   evt.preventDefault()
 //   nameEdit.textContent = inputEditName.value
@@ -123,13 +133,13 @@ const cardList = new Section({
 
 cardList.renderItems()
 
-const submitCardForm = new PopupWithForm('.popup-card', (item) => {
+const popupCardForm = new PopupWithForm('.popup-card', (item) => {
   cardList.addItem(createCard(item))
 
-  submitCardForm.close()
+  popupCardForm.close()
 })
 
-submitCardForm.setEventListeners()
+popupCardForm.setEventListeners()
 
 
 // end

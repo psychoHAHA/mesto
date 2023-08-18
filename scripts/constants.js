@@ -3,6 +3,19 @@ const popupImageElement = document.querySelector('.popup-image')
 const popupImage = document.querySelector('.popup-image__photo')
 const popupImageTitle = document.querySelector('.popup-image__title')
 
+const popupProfileElement = document.querySelector('.popup-profile')
+const popupCardElement = document.querySelector('.popup-card')
+
+const buttonEdit = document.querySelector('.profile__button-edit')
+const buttonAdd = document.querySelector('.profile__button')
+
+const popupImageSelector = '.popup-image'
+
+const groupInputTitle = document.querySelector('.popup-card__input_edit_image-name')
+const groupInputUrl = document.querySelector('.popup-card__input_edit_image-url')
+const inputEditName = document.querySelector('.popup__input_edit_profile-name')
+const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -39,4 +52,4 @@ const VALIDATION_CONFIG = ({
   errorClass: 'popup__input-error_active'
 })
 
-export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle }
+export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector}

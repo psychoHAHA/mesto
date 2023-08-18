@@ -1,10 +1,10 @@
-import PopupWithImage from './PopupWithImage.js'
-
 export default class Card {
-  constructor(data) {
+  constructor(data, handleCardClick) {
     this._name = data.name
     this._link = data.link
     this._alt = data.name
+    this._handleCardClick = handleCardClick
+    console.log(this._handleCardClick);
   }
 
   _getTemplate() {
@@ -27,10 +27,10 @@ export default class Card {
     this._newCard.remove()
   }
 
-  _handleOpenPopup() {
-    const popupImage = new PopupWithImage('.popup-image')
-    popupImage.open(this._name, this._link)
-  }
+  // _handleOpenPopup() {
+  //   const popupImage = new PopupWithImage('.popup-image')
+  //   popupImage.open(this._name, this._link)
+  // }
 
   _setListeners() {
     const likeButton = this._newCard.querySelector('.group__button')
@@ -40,7 +40,7 @@ export default class Card {
     deleteButton.addEventListener('click', () => this._handleClickDelete())
 
     const cardImage = this._newCard.querySelector('.group__image')
-    cardImage.addEventListener('click', () => this._handleOpenPopup())
+    cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link))
   }
 
   generateCard() {

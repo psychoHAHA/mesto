@@ -37,7 +37,7 @@ function createCard() {
 const cardList = new Section({
   data: initialCards,
   renderer: (item) => {
-    const card = new Card(item)
+    const card = new Card(item, handleCardClick)
     const cardElement = card.generateCard()
     cardList.addItem(cardElement)
   },

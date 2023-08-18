@@ -37,8 +37,6 @@ const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
 const handlePopup = new Popup('.popup')
 handlePopup.setEventListeners()
 
-const popupImage = new PopupWithImage('.popup-image')
-
 // end 
 
 // // Закрываем и открываем попапы
@@ -78,7 +76,11 @@ const userInfo = new UserInfo({
   subtitleSelector: '.profile__subtitle'
 })
 
-const popupProfileForm = new PopupWithForm({
+const popupProfileForm = new PopupWithForm('.popup-profile', () => {
+  userInfo.setUserInfo(userInfo.getUserInfo())
+})
+buttonEdit.addEventListener('click', () => {
+  popupProfileForm.open()
   
 })
 // function submitProfileForm (evt) {
@@ -118,7 +120,7 @@ const popupProfileForm = new PopupWithForm({
 
 function createCard() {
   return new Card({name: groupInputTitle.value, link: groupInputUrl.value}, '.card',
-  validPopupCard.disabledButton(), 
+  validPopupCard.disabledButton(),
 ).generateCard()
 }
 
@@ -142,23 +144,27 @@ const popupCardForm = new PopupWithForm('.popup-card', (item) => {
 popupCardForm.setEventListeners()
 
 
+buttonAdd.addEventListener('click', () => {
+  popupCardForm.open()
+})
+
 // end
 
 // Подключаем функции
 
-const openPopupProfile = () => {
-  const handlePopupProfile = new Popup('.popup-profile')
-  handlePopupProfile.open(popupProfileElement)
-}
+// const openPopupProfile = () => {
+//   const handlePopupProfile = new Popup('.popup-profile')
+//   handlePopupProfile.open(popupProfileElement)
+// }
 
-const openPopupCard = () => {
-  const handlePopupCard = new Popup('.popup-card')
-  handlePopupCard.open(popupCardElement)
-}
+// const openPopupCard = () => {
+//   const handlePopupCard = new Popup('.popup-card')
+//   handlePopupCard.open(popupCardElement)
+// }
 
-buttonEdit.addEventListener('click', openPopupProfile)
+// buttonEdit.addEventListener('click', openPopupProfile)
 
-buttonAdd.addEventListener('click', openPopupCard)
+// buttonAdd.addEventListener('click', openPopupCard)
 
 // profileForm.addEventListener('submit', submitProfileForm)
 // cardForm.addEventListener('submit', submitCardForm)

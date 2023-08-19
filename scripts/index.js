@@ -13,50 +13,58 @@ const userInfo = new UserInfo({
   subtitleSelector: '.profile__subtitle'
 })
 
-const popupProfileForm = new PopupWithForm('.popup-profile', () => {
-  userInfo.setUserInfo({title: inputEditName.value, subtitle: inputEditInfo.value})
-  popupProfileForm.close()
-})
+const popupEditProfile = new PopupWithForm('.popup-profile', handleSubmitProfileForm)
+popupEditProfile.setEventListeners()
 
-popupProfileForm.setEventListeners()
+function handleSubmitProfileForm(data) {
+  userInfo.setUserInfo(data)
+  popupEditProfile.close()
+}
 
-buttonEdit.addEventListener('click', () => {
-  popupProfileForm.open()
-  validPopupProfile.disabledButton()
-})
+function handlePopupProfileClick() {
+  popupEditProfile.open()
+  popupEditProfile.setInputValues(userInfo.getUserInfo())
+}
+
+buttonEdit.addEventListener('click', () => handlePopupProfileClick())
 
 
 // Рендер карточки и добавление новой
 
-function createCard() {
-  return new Card({name: groupInputTitle.value, link: groupInputUrl.value}, '.card',
-  validPopupCard.disabledButton(),
-  ).generateCard()
+function createCard(data) {
+  const card = new Card(data,
+  handleCardClick);
+  return card.generateCard()
+
 }
 
 const cardList = new Section({
-  data: initialCards,
   renderer: (item) => {
-    const card = new Card(item, handleCardClick)
-    const cardElement = card.generateCard()
+    const cardElement = createCard(item)
     cardList.addItem(cardElement)
   },
 }, '.group')
 
-cardList.renderItems()
+cardList.renderItems(initialCards)
 
-const popupCardForm = new PopupWithForm('.popup-card', (item) => {
+const popupAddCard = new PopupWithForm('.popup-card', handleSubmitCardForm)
+
+popupAddCard.setEventListeners()
+
+function handleSubmitCardForm(item) {
   cardList.addItem(createCard(item))
+  console.log(item);
+  popupAddCard.close()
+}
 
-  popupCardForm.close()
-})
+function handlePopupCardClick() {
+  popupAddCard.open()
 
-popupCardForm.setEventListeners()
+  validPopupCard.disabledButton()
+}
 
 
-buttonAdd.addEventListener('click', () => {
-  popupCardForm.open()
-})
+buttonAdd.addEventListener('click', () => handlePopupCardClick())
 
 const popupCardImage = new PopupWithImage('.popup-image')
 popupCardImage.setEventListeners()

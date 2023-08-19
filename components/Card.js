@@ -4,7 +4,6 @@ export default class Card {
     this._link = data.link
     this._alt = data.name
     this._handleCardClick = handleCardClick
-    console.log(this._handleCardClick);
   }
 
   _getTemplate() {

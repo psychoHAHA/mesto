@@ -1,7 +1,6 @@
 export default class Section {
-  constructor({ data, renderer }, groupSelector) {
+  constructor({ renderer }, groupSelector) {
     this._renderer = renderer
-    this._renderedItems = data
     this._groupElement = document.querySelector(groupSelector)
   }
 
@@ -9,8 +8,8 @@ export default class Section {
     this._groupElement.prepend(element)
   }
 
-  renderItems() {
-    this._renderedItems.forEach(item => {
+  renderItems(items) {
+    items.forEach(item => {
       this._renderer(item)
     })
   }

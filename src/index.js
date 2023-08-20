@@ -1,6 +1,6 @@
 import Card from "../components/Card.js"
 import FormValidator from "../components/FormValidator.js"
-import { VALIDATION_CONFIG, initialCards, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector} from "./constants.js"
+import { VALIDATION_CONFIG, initialCards, popupProfileElement, popupCardElement, buttonEdit, buttonAdd} from "../utils/constants.js"
 import Section from '../components/Section.js'
 import PopupWithForm  from "../components/PopupWithForm.js"
 import PopupWithImage from '../components/PopupWithImage.js'

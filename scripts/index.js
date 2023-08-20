@@ -63,8 +63,12 @@ function handlePopupCardClick() {
   validPopupCard.disabledButton()
 }
 
-
 buttonAdd.addEventListener('click', () => handlePopupCardClick())
+
+//end
+
+
+// Открытие попапа с каритнкой 
 
 const popupCardImage = new PopupWithImage('.popup-image')
 popupCardImage.setEventListeners()

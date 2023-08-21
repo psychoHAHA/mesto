@@ -16,6 +16,8 @@ const groupInputUrl = document.querySelector('.popup-card__input_edit_image-url'
 const inputEditName = document.querySelector('.popup__input_edit_profile-name')
 const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
 
+const templateSelector = "#template-element"
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -52,4 +54,4 @@ const VALIDATION_CONFIG = ({
   errorClass: 'popup__input-error_active'
 })
 
-export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector}
+export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector, templateSelector}

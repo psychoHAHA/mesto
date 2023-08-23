@@ -6,12 +6,18 @@
   margin: 35px auto 0;
 }
 
-@media screen and (min-width: 880px) {
+@media screen and (min-width: 645px) {
   .group {
-    grid-template-columns: repeat(3, 282px);
+    grid-template-columns: repeat(2, 282px);
     column-gap: 17px;
     align-content: center;
     justify-content: center;
+  }
+}
+
+@media screen and (min-width: 880px) {
+  .group {
+    grid-template-columns: repeat(3, 282px);
     margin-top: 47px;
   }
 }

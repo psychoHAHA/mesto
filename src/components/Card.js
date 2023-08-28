@@ -1,10 +1,11 @@
 export default class Card {
-  constructor(data, handleCardClick, templateSelector) {
+  constructor(data, handleCardClick, handleCardDelete, templateSelector) {
     this._name = data.name
     this._link = data.link
     this._alt = data.name
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
+    this._handleCardDelete = handleCardDelete
   }
 
   _getTemplate() {
@@ -33,7 +34,7 @@ export default class Card {
     likeButton.addEventListener('click', () => likeButton.classList.toggle('group__button_active'))
 
     const deleteButton = this._newCard.querySelector('.group__button-delete')
-    deleteButton.addEventListener('click', () => this._handleClickDelete())
+    deleteButton.addEventListener('click', () => this._handleCardDelete)
 
     this._cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link))
   }

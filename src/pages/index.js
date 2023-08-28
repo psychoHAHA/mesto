@@ -6,6 +6,7 @@ import Section from '../components/Section.js'
 import PopupWithForm  from "../components/PopupWithForm.js"
 import PopupWithImage from '../components/PopupWithImage.js'
 import UserInfo from "../components/UserInfo.js"
+import Api from '../components/Api.js'
 
 // Редактируем профиль 
 
@@ -29,12 +30,27 @@ function handlePopupProfileClick() {
 
 buttonEdit.addEventListener('click', () => handlePopupProfileClick())
 
+const apiConfig = {
+  url: "https://mesto.nomoreparties.co/v1/cohort-74/",
+  headers: {
+    "Content-Type": "application/json",
+    authorization: "f7d1dbf3-9b0e-433f-ae13-d2e6f8e642db",
+  }
+}
+// end
+
+const api = new Api(apiConfig)
+
+api.getAllCards()
+  .then((data) => {
+    cardList.renderItems(data)
+  })
 
 // Рендер карточки и добавление новой
 
 function createCard(data) {
   const card = new Card(data,
-  handleCardClick, templateSelector)
+  handleCardClick, handleCardDelete, templateSelector)
   return card.generateCard()
 
 }
@@ -76,6 +92,10 @@ popupCardImage.setEventListeners()
 
 function handleCardClick(name, link) {
   popupCardImage.open(name, link)
+}
+
+function handleCardDelete(event) {
+  event.target.closest('.group__element').remove()
 }
 
 // end

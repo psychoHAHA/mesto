@@ -18,10 +18,21 @@ export default class Api {
     }).then(this._getResponse)
   }
 
-  deleteCard() {
-    return fetch(`${this._url}/cards/${id}`, {
+  // deleteCard() {
+  //   return fetch(`${this._url}/cards/${id}`, {
+  //     headers: this._headers,
+  //     method: 'DELETE'
+  //   }).then(this._getResponse)
+  // }
+
+  createCard(data) {
+    return fetch(`${this._url}/cards`, {
       headers: this._headers,
-      method: 'DELETE'
+      method: 'POST',
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link,
+      })
     }).then(this._getResponse)
   }
 }

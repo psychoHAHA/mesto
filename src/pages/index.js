@@ -50,7 +50,7 @@ api.getAllCards()
 
 function createCard(data) {
   const card = new Card(data,
-  handleCardClick, handleCardDelete, templateSelector)
+  handleCardClick, templateSelector)
   return card.generateCard()
 
 }
@@ -68,10 +68,13 @@ const popupAddCard = new PopupWithForm('.popup-card', handleSubmitCardForm)
 
 popupAddCard.setEventListeners()
 
-function handleSubmitCardForm(item) {
-  cardList.addItem(createCard(item))
-  console.log(item);
-  popupAddCard.close()
+function handleSubmitCardForm(data) {
+  // cardList.addItem(createCard(item))
+  api.createCard(data).then((res) => {
+    cardList.addItem(createCard(res))
+    console.log(res)
+    popupAddCard.close()
+  })
 }
 
 function handlePopupCardClick() {
@@ -92,10 +95,6 @@ popupCardImage.setEventListeners()
 
 function handleCardClick(name, link) {
   popupCardImage.open(name, link)
-}
-
-function handleCardDelete(event) {
-  event.target.closest('.group__element').remove()
 }
 
 // end

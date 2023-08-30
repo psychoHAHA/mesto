@@ -39,9 +39,9 @@
                 <button type="button" aria-label="Закрыть" class="popup__button-close popup-profile__button-close"></button>
                 <h2 class="popup__title popup-profile__title">Редактировать профиль</h2>
                 <form name="profile-form" class="popup__form popup-profile__form" novalidate>
-                    <input type="text" placeholder="Имя" class="popup__input popup__input_edit_profile-name" value="Жак-Ив Кусто" name="title" required minlength="2" maxlength="40" id="name-input">
+                    <input type="text" placeholder="Имя" class="popup__input popup__input_edit_profile-name" value="Жак-Ив Кусто" name="name" required minlength="2" maxlength="40" id="name-input">
                     <span class="popup__input-error name-input-error"></span>
-                    <input type="text" placeholder="О себе" class="popup__input popup__input_edit_profile-info" value="Исследователь океана" name="subtitle" required minlength="2" maxlength="200" id="info-input">
+                    <input type="text" placeholder="О себе" class="popup__input popup__input_edit_profile-info" value="Исследователь океана" name="about" required minlength="2" maxlength="200" id="info-input">
                     <span class="popup__input-error info-input-error"></span>
                     <button aria-label="Сохранить изменения" type="submit" class="popup__button popup-profile__button button" disabled>Сохранить</button>
                 </form>
@@ -67,6 +67,14 @@
                 <button type="button" aria-label="Закрыть" class="popup__button-close popup-image__button-close"></button>
                 <img src="https://images.unsplash.com/photo-1683009427540-c5bd6a32abf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="" class="popup-image__photo">
                 <h2 class="popup-image__title">Новое место</h2>
+            </div>
+        </aside>
+
+        <aside class="popup popup-confirm">
+            <div class="popup__content popup-confirm__content">
+                <button type="button" aria-label="Закрыть" class="popup__button-close popup-confirm__button-close"></button>
+                <h2 class="popup__title popup-confirm__title">Вы уверены?</h2>
+                <button aria-label="Подтверждение действия" type="submit" class="popup__button popup-confirm__button button">Да</button>
             </div>
         </aside>
 

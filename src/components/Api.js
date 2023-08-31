@@ -35,6 +35,16 @@ export default class Api {
     }).then(this._getResponse)
   }
 
+  changeAvatarData(data) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      headers: this._headers,
+      method: 'PATCH',
+      body: JSON.stringify({
+        avatar: data.avatar,
+      })
+    }) 
+  }
+
   createCard(data) {
     return fetch(`${this._url}/cards`, {
       headers: this._headers,
@@ -46,10 +56,10 @@ export default class Api {
     }).then(this._getResponse)
   }
 
-  deleteCard(id) {
-    return fetch(`${this._url}/cards/${id}`, {
+  deleteCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      method: 'DELETE',
       headers: this._headers,
-      method: 'DELETE'
     }).then(this._getResponse)
   }
 }

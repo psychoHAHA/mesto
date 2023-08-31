@@ -5,9 +5,9 @@ import { VALIDATION_CONFIG, popupProfileElement, popupCardElement, buttonEdit, b
 import Section from '../components/Section.js'
 import PopupWithForm  from "../components/PopupWithForm.js"
 import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js'
 import UserInfo from "../components/UserInfo.js"
 import Api from '../components/Api.js'
-import PopupWithConfirmation from '../components/PopupWithConfirmation.js'
 
 // Api
 
@@ -103,21 +103,40 @@ const popupConfirmationDelete = new PopupWithConfirmation('.popup-confirm', hand
 
 popupConfirmationDelete.setEventListeners()
 
-function handleDeleteCard (card, id) {
-  api.deleteCard(id).then(() => {
-    card.handleDeleteCard()
+function handleDeleteCard (card) {
+  api.deleteCard(card.cardId)
+  .then(() => {
+    card.handleClickDelete()
     popupConfirmationDelete.close()
   })
 }
 
 
-const handlePopupConfirmationClick = () => {
-  popupConfirmationDelete.open()
+const handlePopupConfirmationClick = (card) => {
+  popupConfirmationDelete.open(card)
 }
 
 // end
 
-// Открытие попапа с каритнкой 
+// Изменение аватара
+
+const popupEditAvatar = new PopupWithForm('.popup-avatar',)
+
+popupEditAvatar.setEventListeners()
+
+
+const handleAvatarClick = () => {
+  popupEditAvatar.open()
+}
+
+const buttonAvatar = document.querySelector('.header__logo')
+buttonAvatar.addEventListener('click', () => {
+  console.log('cl9ck');
+})
+
+// end
+
+// Открытие попапа с картинкой 
 
 const popupCardImage = new PopupWithImage('.popup-image')
 popupCardImage.setEventListeners()

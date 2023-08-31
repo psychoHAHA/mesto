@@ -78,6 +78,18 @@
             </div>
         </aside>
 
+        <aside class="popup popup-avatar">
+            <div class="popup__content popup-avatar__content">
+                <button type="button" aria-label="Закрыть" class="popup__button-close popup-avatar__button-close"></button>
+                <h2 class="popup__title popup-avatar__title">Обновить аватар</h2>
+                <form name="card-form" class="popup__form popup-avatar__form" novalidate>
+                    <input type="url" placeholder="Ссылка на аватарку" class="popup__input popup-avatar__input popup-card__input_edit_image-url" name="avatar" required id="url-input">
+                    <span class="popup__input-error url-input-error"></span>
+                    <button aria-label="Сохранить" type="submit" class="popup__button popup-avatar__button button" disabled>Сохранить</button>
+                </form>
+            </div>
+        </aside>
+
         <template id="template-element" class="card">
             <div class="group__element">
                 <img src="#" alt="#" class="group__image">

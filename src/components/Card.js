@@ -3,6 +3,7 @@ export default class Card {
     this._name = data.name
     this._link = data.link
     this._alt = data.name
+    this.cardId = data._id
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
     this._handlePopupConfirmationClick = handlePopupConfirmationClick
@@ -39,7 +40,9 @@ export default class Card {
 
     this._cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link))
 
-    this._deleteButton.addEventListener('click', () => this._handlePopupConfirmationClick())
+    this._deleteButton.addEventListener('click', () => {
+      this._handlePopupConfirmationClick(this)
+    })
   }
 
   generateCard() {

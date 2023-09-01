@@ -42,7 +42,7 @@ export default class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       })
-    }) 
+    }).then(this._getResponse)
   }
 
   createCard(data) {

@@ -2,6 +2,7 @@ const popupElement = document.querySelector('.popup')
 const popupImageElement = document.querySelector('.popup-image')
 const popupImage = document.querySelector('.popup-image__photo')
 const popupImageTitle = document.querySelector('.popup-image__title')
+const popupAvatar = document.querySelector('.popup-avatar')
 
 const popupProfileElement = document.querySelector('.popup-profile')
 const popupCardElement = document.querySelector('.popup-card')
@@ -54,4 +55,4 @@ const VALIDATION_CONFIG = ({
   errorClass: 'popup__input-error_active'
 })
 
-export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector, templateSelector}
+export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle, popupAvatar, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector, templateSelector}

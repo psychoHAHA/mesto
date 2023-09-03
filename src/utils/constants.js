@@ -55,4 +55,4 @@ const VALIDATION_CONFIG = ({
   errorClass: 'popup__input-error_active'
 })
 
-export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle, popupAvatar, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector, templateSelector}
+export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle, popupAvatar, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector, templateSelector }

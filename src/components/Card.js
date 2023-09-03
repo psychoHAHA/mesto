@@ -37,6 +37,12 @@ export default class Card {
     this._newCard.remove()
   }
 
+  // Отображение количества лайков
+
+  handleCounterLike(card) {
+    
+  }
+
   // Слушатели
 
   _setListeners() {

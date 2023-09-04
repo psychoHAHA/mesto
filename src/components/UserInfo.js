@@ -18,6 +18,7 @@ export default class UserInfo {
     this._about.textContent = data.about
     this._avatar.src = data.avatar
     this._userId = data._id
+    console.log(this._userId)
   }
 
   returnUserId() {

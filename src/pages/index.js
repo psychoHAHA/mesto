@@ -65,7 +65,7 @@ buttonEdit.addEventListener('click', () => handlePopupProfileClick())
 
 const createCard = (data) => {
   const card = new Card(data,
-  handleCardClick, handlePopupConfirmationClick, userInfo.returnUserId(), templateSelector)
+  handleCardClick, handlePopupConfirmationClick, userInfo.returnUserId(), handleClickLike, templateSelector)
   return card.generateCard()
 
 }
@@ -120,6 +120,18 @@ const handlePopupConfirmationClick = (card) => {
 }
 
 // end
+
+function handleClickLike(card) {
+  if (card.myLike) {
+    api.deleteLike(card.cardId).then((res) => {
+      card.removeLike(res.likes.length)
+    })
+  } else {
+    api.handleLike(card.cardId).then((res) => {
+      card.addLike(res.likes.length)
+    })
+  }
+}
 
 // Изменение аватара
 

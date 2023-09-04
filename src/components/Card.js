@@ -1,14 +1,16 @@
 export default class Card {
-  constructor(data, handleCardClick, handlePopupConfirmationClick, userId,templateSelector) {
+  constructor(data, handleCardClick, handlePopupConfirmationClick, userId, handleClickLike, templateSelector) {
     this._name = data.name
     this._link = data.link
     this._alt = data.name
     this.cardId = data._id
     this._ownerId = data.owner._id
     this._userId = userId
+    this._likes = data.likes
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
     this._handlePopupConfirmationClick = handlePopupConfirmationClick
+    this._handleClickLike = handleClickLike
   }
 
   // Получение шаблона карточки
@@ -25,6 +27,17 @@ export default class Card {
     this._cardTitle = this._newCard.querySelector('.group__title')
     this._cardImage = this._newCard.querySelector('.group__image')
     this._deleteButton = this._newCard.querySelector('.group__button-delete')
+    this._likeButton = this._newCard.querySelector('.group__button')
+    this._likeCounter = this._newCard.querySelector('.group__like-counter')
+    this._likeCounter.textContent = this._likes.length
+    
+    this.myLike = this._likes.some(like => like._id === this._userId)
+
+    if (this.myLike) {
+      this._likeButton.classList.add('group__button_active')
+    }
+
+    console.log(this.myLike);
 
     this._cardTitle.textContent = this._name
     this._cardImage.src = this._link
@@ -37,23 +50,30 @@ export default class Card {
     this._newCard.remove()
   }
 
-  // Отображение количества лайков
+  addLike(like) {
+    this._likeButton.classList.add('group__button_active')
+    this._likeCounter.textContent = like
+  }
 
-  handleCounterLike(card) {
-    
+  removeLike(like) {
+    this._likeButton.classList.remove('group__button_active')
+    this._likeCounter.textContent = like
   }
 
   // Слушатели
 
   _setListeners() {
-    const likeButton = this._newCard.querySelector('.group__button')
-    likeButton.addEventListener('click', () => likeButton.classList.toggle('group__button_active'))
+    this._likeButton.addEventListener('click', () => this._handleClickLike(this, this.myLike))
 
     this._cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link))
 
     this._deleteButton.addEventListener('click', () => {
       this._handlePopupConfirmationClick(this)
     })
+  }
+ 
+  counterLike(card) {
+    this._dataLikes = card.likes
   }
 
   // Процесс генерации карточки
@@ -68,6 +88,7 @@ export default class Card {
     if (this._ownerId !== this._userId) {
       this._deleteButton.remove()
     }
+
     return this._newCard
   }
 }

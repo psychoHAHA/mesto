@@ -121,6 +121,8 @@ const handlePopupConfirmationClick = (card) => {
 
 // end
 
+// Ставим лайк, если его там еще нет, и убираем его, если он там уже стоит
+
 function handleClickLike(card) {
   if (card.myLike) {
     api.deleteLike(card.cardId).then((res) => {
@@ -132,6 +134,8 @@ function handleClickLike(card) {
     })
   }
 }
+
+// end
 
 // Изменение аватара
 

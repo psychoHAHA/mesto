@@ -31,8 +31,6 @@ export default class Card {
     this._likeButton = this._newCard.querySelector('.group__button')
     this._likeCounter = this._newCard.querySelector('.group__like-counter')
     
-    // Контент счетчика приравниваем к количеству элементов в массиве this._likes 
-
     this._likeCounter.textContent = this._likes.length
 
     this._cardTitle.textContent = this._name
@@ -67,7 +65,7 @@ export default class Card {
   // Слушатели
 
   _setListeners() {
-    this._likeButton.addEventListener('click', () => this._handleClickLike(this, this.myLike))
+    this._likeButton.addEventListener('click', () => this._handleClickLike(this))
 
     this._cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link))
 

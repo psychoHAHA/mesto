@@ -134,35 +134,6 @@ function handleDeleteCard (card) {
   })
 }
 
-
-// const handlePopupConfirmationClick = (card) => {
-//   popupConfirmationDelete.open(card)
-// }
-
-// end
-
-// Ставим лайк, если его там еще нет, и убираем его, если он там уже стоит
-
-// function handleClickLike(card) {
-//   if (card.myLike) {
-//     api.deleteLike(card.cardId).then((res) => {
-//       card.removeLike(res.likes.length)
-//     })
-//   } else {
-//     api.handleLike(card.cardId).then((res) => {
-//       card.addLike(res.likes.length)
-//     })
-//   }
-// }
-
-// function handleAddLike(cardId) {
-//   api.handleLike(cardId).then((data) => {
-//     card.addLike
-//   })
-// }
-
-// end
-
 // Изменение аватара
 
 const popupEditAvatar = new PopupWithForm('.popup-avatar', handleSubmitAvatarForm)
@@ -201,10 +172,6 @@ buttonAvatar.addEventListener('click', () => {
 
 const popupCardImage = new PopupWithImage('.popup-image')
 popupCardImage.setEventListeners()
-
-// function handleCardClick(name, link) {
-//   popupCardImage.open(name, link)
-// }
 
 // end
 

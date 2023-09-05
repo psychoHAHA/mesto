@@ -5,11 +5,23 @@ export default class PopupWithConfirmation extends Popup {
     super(popupSelector)
     this._submitCallback = submitCallback
     this._confirmButton = this._popup.querySelector('.popup-confirm__button')
+    this._buttonSubmit = this._popup.querySelector('.popup__button')
   }
 
   open(card) {
     super.open()
     this.card = card
+  }
+
+  renderLoading(loading, newText) {
+    if (!this._buttonSubmit) return
+
+    if (loading) {
+      this._defaultText = this._buttonSubmit.textContent
+      this._buttonSubmit.textContent = newText
+    } else {
+      this._buttonSubmit.textContent = this._defaultText
+    }
   }
 
   setEventListeners() {

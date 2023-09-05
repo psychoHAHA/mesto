@@ -45,10 +45,14 @@ const popupEditProfile = new PopupWithForm('.popup-profile', handleSubmitProfile
 popupEditProfile.setEventListeners()
 
 function handleSubmitProfileForm (data) {
+  popupEditProfile.renderLoading(true, 'Загрузка...')
   api.changeUserData(data)
-  .then((item) => {
-    userInfo.setUserInfo(item)
+  .then((res) => {
+    userInfo.setUserInfo(res)
     popupEditProfile.close()
+  })
+  .finally(() => {
+    popupEditProfile.renderLoading(false)
   })
 }
 
@@ -82,11 +86,14 @@ const popupAddCard = new PopupWithForm('.popup-card', handleSubmitCardForm)
 popupAddCard.setEventListeners()
 
 function handleSubmitCardForm (data) {
-  // cardList.addItem(createCard(item))
+  popupAddCard.renderLoading(true, 'Загрузка...')
   api.createCard(data)
-  .then((item) => {
-    cardList.addItem(createCard(item))
+  .then((res) => {
+    cardList.addItem(createCard(res))
     popupAddCard.close()
+  })
+  .finally(() => {
+    popupAddCard.renderLoading(false)
   })
 }
 
@@ -107,10 +114,14 @@ const popupConfirmationDelete = new PopupWithConfirmation('.popup-confirm', hand
 popupConfirmationDelete.setEventListeners()
 
 function handleDeleteCard (card) {
+  popupConfirmationDelete.renderLoading(true, 'Загрузка...')
   api.deleteCard(card.cardId)
   .then(() => {
     card.handleClickDelete()
     popupConfirmationDelete.close()
+  })
+  .finally(() => {
+    popupConfirmationDelete.renderLoading(false)
   })
 }
 
@@ -153,15 +164,19 @@ const handleAvatarClick = () => {
 }
 
 function handleSubmitAvatarForm(data) {
-  api.changeAvatarData(data).then((item) => {
-    userInfo.setUserInfo(item)
+  popupEditAvatar.renderLoading(true, 'Загрузка...')
+  api.changeAvatarData(data)
+  .then((res) => {
+    userInfo.setUserInfo(res)
     popupEditAvatar.close()
+  })
+  .finally(() => {
+    popupEditAvatar.renderLoading(false)
   })
 }
 
 const buttonAvatar = document.querySelector('.profile__avatar')
 buttonAvatar.addEventListener('click', () => {
-  console.log('click');
   handleAvatarClick()
 })
 

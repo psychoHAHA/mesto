@@ -42,8 +42,6 @@ export default class Card {
       this._likeButton.classList.add('group__button_active')
     }
 
-    console.log(this.myLike);
-
     this._cardTitle.textContent = this._name
     this._cardImage.src = this._link
     this._cardImage.alt = this._alt
@@ -60,6 +58,7 @@ export default class Card {
   addLike(like) {
     this._likeButton.classList.add('group__button_active')
     this._likeCounter.textContent = like
+    console.log('лайк');
   }
 
   // Убираем лайк
@@ -67,6 +66,7 @@ export default class Card {
   removeLike(like) {
     this._likeButton.classList.remove('group__button_active')
     this._likeCounter.textContent = like
+    console.log('дизлайк');
   }
 
   // Слушатели

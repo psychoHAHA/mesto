@@ -12,8 +12,6 @@ export default class Card {
     this._handlePopupConfirmationClick = handlePopupConfirmationClick
     this._handleAddLike = handleAddLike
     this._handleRemoveLike = handleRemoveLike
-
-    console.log(this._likes);
   }
 
   // Получение шаблона карточки
@@ -32,6 +30,8 @@ export default class Card {
     this._deleteButton = this._newCard.querySelector('.group__button-delete')
     this._likeButton = this._newCard.querySelector('.group__button')
     this._likeCounter = this._newCard.querySelector('.group__like-counter')
+
+    this._likeCounter.textContent = this._likes.length
 
     // Удаление кнопки "удалить" с чужих карточек
 

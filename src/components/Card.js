@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({ data, userId, templateSelector, handleCardClick, handlePopupConfirmationClick, handlerAddLike, handlerRemoveLike }) {
+  constructor({ data, userId, templateSelector, handleCardClick, handlePopupConfirmationClick, handleAddLike, handleRemoveLike }) {
     this._name = data.name
     this._link = data.link
     this._alt = data.name
@@ -10,8 +10,8 @@ export default class Card {
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
     this._handlePopupConfirmationClick = handlePopupConfirmationClick
-    this._handlerAddLike = handlerAddLike
-    this._handlerRemoveLike = handlerRemoveLike
+    this._handleAddLike = handleAddLike
+    this._handleRemoveLike = handleRemoveLike
   }
 
   // Получение шаблона карточки
@@ -46,27 +46,11 @@ export default class Card {
     this._newCard.remove()
   }
 
-  // // Ставим лайк
-
-  // addLike(like) {
-  //   this._likeButton.classList.add('group__button_active')
-  //   this._likeCounter.textContent = like
-  //   console.log('лайк');
-  // }
-
-  // // Убираем лайк
-
-  // removeLike(like) {
-  //   this._likeButton.classList.remove('group__button_active')
-  //   this._likeCounter.textContent = like
-  //   console.log('дизлайк');
-  // }
-
   _handleClickLike() {
     if (this._likeButton.classList.contains('group__button_active')) {
-      this._handlerRemoveLike(this.cardId)
+      this._handleRemoveLike(this.cardId)
     } else {
-      this._handlerAddLike(this.cardId)
+      this._handleAddLike(this.cardId)
     }
   }
 

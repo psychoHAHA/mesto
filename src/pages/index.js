@@ -69,19 +69,18 @@ const createCard = (data) => {
   handlePopupConfirmationClick: (card) => {
     popupConfirmationDelete.open(card)
   },
-  handlerAddLike: (cardId) => {
+  handleAddLike: (cardId) => {
     api.handleLike(cardId).then((data) => {
       card.updateLike(data)
     })
   },
-  handlerRemoveLike: (cardId) => {
+  handleRemoveLike: (cardId) => {
     api.deleteLike(cardId).then((data) => {
       card.updateLike(data)
     })
   }
 })
   return card.generateCard()
-
 }
 
 const cardList = new Section({

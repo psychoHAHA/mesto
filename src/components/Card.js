@@ -12,6 +12,8 @@ export default class Card {
     this._handlePopupConfirmationClick = handlePopupConfirmationClick
     this._handleAddLike = handleAddLike
     this._handleRemoveLike = handleRemoveLike
+
+    console.log(this._likes);
   }
 
   // Получение шаблона карточки
@@ -32,6 +34,16 @@ export default class Card {
     this._likeCounter = this._newCard.querySelector('.group__like-counter')
     
     this._likeCounter.textContent = this._likes.length
+
+    // Удаление кнопки "удалить" с чужих карточек
+
+    if (this._ownerId !== this._userId) {
+      this._deleteButton.remove()
+    }
+
+    if (this._likes.some(like => like._id === this._userId)) {
+      this._toggleLike()
+    }
 
     this._cardTitle.textContent = this._name
     this._cardImage.src = this._link
@@ -79,12 +91,6 @@ export default class Card {
   generateCard() {
     this._newCard = this._getTemplate()
     this._setData()
-
-    // Удаление кнопки "удалить" с чужих карточек
-
-    if (this._ownerId !== this._userId) {
-      this._deleteButton.remove()
-    }
 
     this._setListeners()
 

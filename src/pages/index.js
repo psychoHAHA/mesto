@@ -1,23 +1,16 @@
 import '../pages/index.css'
 import Card from "../components/Card.js"
 import FormValidator from "../components/FormValidator.js"
-import { VALIDATION_CONFIG, popupProfileElement, popupCardElement, popupAvatar, buttonEdit, buttonAdd, templateSelector} from "../utils/constants.js"
+import { VALIDATION_CONFIG, popupProfileElement, popupCardElement, popupAvatar, buttonEdit, buttonAdd, apiConfig, templateSelector} from "../utils/constants.js"
 import Section from '../components/Section.js'
 import PopupWithForm  from "../components/PopupWithForm.js"
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithConfirmation from '../components/PopupWithConfirmation.js'
 import UserInfo from "../components/UserInfo.js"
 import Api from '../components/Api.js'
+let userId
 
 // Api
-
-const apiConfig = {
-  url: "https://mesto.nomoreparties.co/v1/cohort-74",
-  headers: {
-    "Content-Type": "application/json",
-    authorization: "f7d1dbf3-9b0e-433f-ae13-d2e6f8e642db",
-  }
-}
 
 const api = new Api(apiConfig)
 
@@ -28,6 +21,7 @@ api.getAllCards()
 
 api.getUserData()
   .then((data) => {
+    userId = data._id
     userInfo.setUserInfo(data)
   })
 
@@ -68,8 +62,24 @@ buttonEdit.addEventListener('click', () => handlePopupProfileClick())
 // Рендер карточки и добавление новой
 
 const createCard = (data) => {
-  const card = new Card(data,
-  handleCardClick, handlePopupConfirmationClick, userInfo.returnUserId(), handleClickLike, templateSelector)
+  const card = new Card({data, userId, templateSelector,
+  handleCardClick: (name, link) => {
+    popupCardImage.open(name, link)
+  },
+  handlePopupConfirmationClick: (card) => {
+    popupConfirmationDelete.open(card)
+  },
+  handlerAddLike: (cardId) => {
+    api.handleLike(cardId).then((data) => {
+      card.updateLike(data)
+    })
+  },
+  handlerRemoveLike: (cardId) => {
+    api.deleteLike(cardId).then((data) => {
+      card.updateLike(data)
+    })
+  }
+})
   return card.generateCard()
 
 }
@@ -126,25 +136,31 @@ function handleDeleteCard (card) {
 }
 
 
-const handlePopupConfirmationClick = (card) => {
-  popupConfirmationDelete.open(card)
-}
+// const handlePopupConfirmationClick = (card) => {
+//   popupConfirmationDelete.open(card)
+// }
 
 // end
 
 // Ставим лайк, если его там еще нет, и убираем его, если он там уже стоит
 
-function handleClickLike(card) {
-  if (card.myLike) {
-    api.deleteLike(card.cardId).then((res) => {
-      card.removeLike(res.likes.length)
-    })
-  } else {
-    api.handleLike(card.cardId).then((res) => {
-      card.addLike(res.likes.length)
-    })
-  }
-}
+// function handleClickLike(card) {
+//   if (card.myLike) {
+//     api.deleteLike(card.cardId).then((res) => {
+//       card.removeLike(res.likes.length)
+//     })
+//   } else {
+//     api.handleLike(card.cardId).then((res) => {
+//       card.addLike(res.likes.length)
+//     })
+//   }
+// }
+
+// function handleAddLike(cardId) {
+//   api.handleLike(cardId).then((data) => {
+//     card.addLike
+//   })
+// }
 
 // end
 
@@ -187,9 +203,9 @@ buttonAvatar.addEventListener('click', () => {
 const popupCardImage = new PopupWithImage('.popup-image')
 popupCardImage.setEventListeners()
 
-function handleCardClick(name, link) {
-  popupCardImage.open(name, link)
-}
+// function handleCardClick(name, link) {
+//   popupCardImage.open(name, link)
+// }
 
 // end
 

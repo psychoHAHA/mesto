@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(data, handleCardClick, handlePopupConfirmationClick, userId,handleClickLike, templateSelector) {
+  constructor({ data, userId, templateSelector, handleCardClick, handlePopupConfirmationClick, handlerAddLike, handlerRemoveLike }) {
     this._name = data.name
     this._link = data.link
     this._alt = data.name
@@ -10,7 +10,8 @@ export default class Card {
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
     this._handlePopupConfirmationClick = handlePopupConfirmationClick
-    this._handleClickLike = handleClickLike
+    this._handlerAddLike = handlerAddLike
+    this._handlerRemoveLike = handlerRemoveLike
   }
 
   // Получение шаблона карточки
@@ -33,14 +34,6 @@ export default class Card {
     // Контент счетчика приравниваем к количеству элементов в массиве this._likes 
 
     this._likeCounter.textContent = this._likes.length
-    
-    // Если это мой лайк, то закрашиваем его
-
-    this.myLike = this._likes.some(like => like._id === this._userId)
-
-    if (this.myLike) {
-      this._likeButton.classList.add('group__button_active')
-    }
 
     this._cardTitle.textContent = this._name
     this._cardImage.src = this._link
@@ -53,20 +46,38 @@ export default class Card {
     this._newCard.remove()
   }
 
-  // Ставим лайк
+  // // Ставим лайк
 
-  addLike(like) {
-    this._likeButton.classList.add('group__button_active')
-    this._likeCounter.textContent = like
-    console.log('лайк');
+  // addLike(like) {
+  //   this._likeButton.classList.add('group__button_active')
+  //   this._likeCounter.textContent = like
+  //   console.log('лайк');
+  // }
+
+  // // Убираем лайк
+
+  // removeLike(like) {
+  //   this._likeButton.classList.remove('group__button_active')
+  //   this._likeCounter.textContent = like
+  //   console.log('дизлайк');
+  // }
+
+  _handleClickLike() {
+    if (this._likeButton.classList.contains('group__button_active')) {
+      this._handlerRemoveLike(this.cardId)
+    } else {
+      this._handlerAddLike(this.cardId)
+    }
   }
 
-  // Убираем лайк
+  _toggleLike() {
+    this._likeButton.classList.toggle('group__button_active')
+  }
 
-  removeLike(like) {
-    this._likeButton.classList.remove('group__button_active')
-    this._likeCounter.textContent = like
-    console.log('дизлайк');
+  updateLike(data) {
+    this._like = data.likes
+    this._likeCounter.textContent = (this._like).length
+    this._toggleLike()
   }
 
   // Слушатели

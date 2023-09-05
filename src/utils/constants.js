@@ -19,33 +19,6 @@ const inputEditInfo = document.querySelector('.popup__input_edit_profile-info')
 
 const templateSelector = "#template-element"
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const VALIDATION_CONFIG = ({
   formElement: '.popup__form',
   inputSelector: '.popup__input',
@@ -55,4 +28,12 @@ const VALIDATION_CONFIG = ({
   errorClass: 'popup__input-error_active'
 })
 
-export { initialCards, VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle, popupAvatar, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector, templateSelector }
+const apiConfig = {
+  url: "https://mesto.nomoreparties.co/v1/cohort-74",
+  headers: {
+    "Content-Type": "application/json",
+    authorization: "f7d1dbf3-9b0e-433f-ae13-d2e6f8e642db",
+  }
+}
+
+export { VALIDATION_CONFIG, popupElement, popupImageElement, popupImage, popupImageTitle, popupAvatar, popupProfileElement, popupCardElement, buttonEdit, buttonAdd, groupInputTitle, groupInputUrl, inputEditName, inputEditInfo, popupImageSelector, templateSelector, apiConfig }

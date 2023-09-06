@@ -14,16 +14,13 @@ let userId
 
 const api = new Api(apiConfig)
 
-api.getAllCards()
-  .then((data) => {
-    cardList.renderItems(data)
-  })
-
-api.getUserData()
-  .then((data) => {
-    userId = data._id
-    userInfo.setUserInfo(data)
-  })
+Promise.all([api.getUserData(), api.getAllCards()])
+.then(([user, cards]) => {
+  userId = user._id
+  userInfo.setUserInfo(user)
+  cardList.renderItems(cards, userId)
+})
+.catch((err) => alert(err))
 
 // end
 
@@ -39,12 +36,13 @@ const popupEditProfile = new PopupWithForm('.popup-profile', handleSubmitProfile
 popupEditProfile.setEventListeners()
 
 function handleSubmitProfileForm (data) {
-  popupEditProfile.renderLoading(true, 'Загрузка...')
+  popupEditProfile.renderLoading(true, 'Cохранение...')
   api.changeUserData(data)
   .then((res) => {
     userInfo.setUserInfo(res)
     popupEditProfile.close()
   })
+  .catch((err) => alert(err))
   .finally(() => {
     popupEditProfile.renderLoading(false)
   })
@@ -95,12 +93,13 @@ const popupAddCard = new PopupWithForm('.popup-card', handleSubmitCardForm)
 popupAddCard.setEventListeners()
 
 function handleSubmitCardForm (data) {
-  popupAddCard.renderLoading(true, 'Загрузка...')
+  popupAddCard.renderLoading(true, 'Cохранение...')
   api.createCard(data)
   .then((res) => {
     cardList.addItem(createCard(res))
     popupAddCard.close()
   })
+  .catch((err) => alert(err))
   .finally(() => {
     popupAddCard.renderLoading(false)
   })
@@ -123,12 +122,13 @@ const popupConfirmationDelete = new PopupWithConfirmation('.popup-confirm', hand
 popupConfirmationDelete.setEventListeners()
 
 function handleDeleteCard (card) {
-  popupConfirmationDelete.renderLoading(true, 'Загрузка...')
+  popupConfirmationDelete.renderLoading(true, 'Cохранение...')
   api.deleteCard(card.cardId)
   .then(() => {
     card.handleClickDelete()
     popupConfirmationDelete.close()
   })
+  .catch((err) => alert(err))
   .finally(() => {
     popupConfirmationDelete.renderLoading(false)
   })
@@ -139,9 +139,6 @@ function handleDeleteCard (card) {
 const popupEditAvatar = new PopupWithForm('.popup-avatar', handleSubmitAvatarForm)
 popupEditAvatar.setEventListeners()
 
-popupEditAvatar.setEventListeners()
-
-
 const handleAvatarClick = () => {
   popupEditAvatar.open()
   popupEditAvatar.setInputValues(userInfo.getUserInfo())
@@ -150,21 +147,20 @@ const handleAvatarClick = () => {
 }
 
 function handleSubmitAvatarForm(data) {
-  popupEditAvatar.renderLoading(true, 'Загрузка...')
+  popupEditAvatar.renderLoading(true, 'Cохранение...')
   api.changeAvatarData(data)
   .then((res) => {
     userInfo.setUserInfo(res)
     popupEditAvatar.close()
   })
+  .catch((err) => alert(err))
   .finally(() => {
     popupEditAvatar.renderLoading(false)
   })
 }
 
 const buttonAvatar = document.querySelector('.profile__avatar')
-buttonAvatar.addEventListener('click', () => {
-  handleAvatarClick()
-})
+buttonAvatar.addEventListener('click', () => handleAvatarClick())
 
 // end
 

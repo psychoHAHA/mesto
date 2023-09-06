@@ -5,7 +5,7 @@ export default class PopupWithForm extends Popup {
     super(popupSelector)
     this._submitCallback = submitCallback
     this._form = this._popup.querySelector('.popup__form')
-    this._inputList = this._form.querySelectorAll('.popup__input')
+    this._inputList = Array.from(this._form.querySelectorAll('.popup__input'))
     this._buttonSubmit = this._popup.querySelector('.popup__button')
   }
 
@@ -30,8 +30,8 @@ export default class PopupWithForm extends Popup {
   }
 
   close() {
-    super.close()
     this._form.reset()
+    super.close()
   }
 
   renderLoading(loading, newText) {

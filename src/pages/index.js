@@ -141,7 +141,6 @@ popupEditAvatar.setEventListeners()
 
 const handleAvatarClick = () => {
   popupEditAvatar.open()
-  popupEditAvatar.setInputValues(userInfo.getUserInfo())
 
   validPopupAvatar.disabledButton()
 }
